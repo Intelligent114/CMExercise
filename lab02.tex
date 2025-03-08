@@ -1,0 +1,61 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{color}
+\geometry{left=2.18cm,right=2.18cm,top=1.54cm,bottom=2.0cm}
+\pagestyle{empty}
+\title{\textbf {2025春计算方法--实验报告 \#2}}
+\author{\textbf{\color{red}仅供参考！}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+运行环境：[自己给出。。。]
+%win11，vscode，py3
+
+\section*{实验内容与要求}
+
+    对函数\textcolor{blue}{$f(x)=\dfrac{3x+1}{x^2-2x+3},x\in[-5,5]$}，构造其$N$次\textcolor{blue}{Lagrange插值函数} $p(x)$，取$\max\limits_{x\in[-5,5]}|f(x)-p(x)|\approx\max\limits_{0\leq i\leq 500}|f(y_i)-p(y_i)|,y_i=\dfrac{i}{50}-5$为\textcolor{blue}{近似误差}。其中\textcolor{red}{$N+1$}个\textcolor{red}{插值节点}取值为：
+
+    \begin{enumerate}
+        \item $x_i=-5+\dfrac{10}{N}i,i=0,1,\cdots,N$
+        \item $x_i=-5\cos\left(\dfrac{2i+1}{2N+2}\pi\right),i=0,1,\cdots,N$(Chebyshev点)
+    \end{enumerate}
+
+    分别取\textcolor{blue}{$N=4,8,16,32$}，比较以上两组节点的插值结果（保留到小数点后12位）
+
+
+\section{数值结果}
+
+
+    \begin{table}[H]
+    \begin{center}
+    \begin{tabular}{|c|c|c|}
+    \hline
+    $N$ & 方法1 & 方法2 \\
+    \hline
+    $4$ & $0.123456789012E+001$ & $0.123456789012E+001$ \\
+    \hline
+    $8$ &  &  \\
+    \hline
+    $16$ &  &  \\
+    \hline
+    $32$ &  &  \\
+    \hline
+    \end{tabular}
+    \end{center}
+    \end{table}
+
+
+\section{算法分析}
+
+
+\section{实验小结}
+
+\end{document}
