@@ -1,0 +1,49 @@
+\documentclass[cn,hazy,green,11pt,normal]{elegantnote}
+\title{计算方法作业\#3}
+
+\author{陈文轩}
+\institute{KFRC}
+
+\date{\today}
+
+\usepackage{amssymb}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{题目}
+
+    \begin{enumerate}
+        \item (6pts)构造积分$\bar{I}(f)=\int_{-h}^{2h}f(x)\diff x$的数值积分公式$I(f)=a_{-1}f(-h)+a_0 f(0)+a_1 f(2h)$，$h>0$；
+        \item (6pts)分别利用梯形公式和Simpson公式求如下积分及其误差(计算结果至少保留小数点后4位)：$\int_0^2 e^{-x}\sin x\diff x$
+        \item (10pts)记$I(f)=\int_{-2}^2 f(x)\diff x$，设$S(f(x))$为其数值积分公式，其中$I(f)\approx S(f(x))=Af(-\alpha)+Bf(0)+Cf(\alpha)$.
+            \begin{enumerate}
+                \item 试确定参数$A,B,C,\alpha$使得该数值积分公式具有尽可能高的代数精度，并确定该公式的代数精度(需给出求解过程)；
+                \item 设$f(x)$足够光滑(可微)，求该数值积分公式的误差
+            \end{enumerate}
+        \item (8pts)求满足下表数据以及边界条件$S''(-2)=S''(2)=0(n=3)$的三次样条插值函数$S(x)$，并计算$S(0)$的值。注意：$n$为小区间个数。
+            \begin{table}[htb]
+                \begin{center}
+                    \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                    $x$ & $-2.00$ & $-1.00$ & $1.00$ & $2.00$ \\
+                    \hline
+                    $f(x)$ & $-4.00$ & $2.00$ & $2.50$ & $1.50$ \\
+                    \hline
+                    \end{tabular}
+                \end{center}
+            \end{table}
+    \end{enumerate}
+
+\section{解答}
+
+    截止后更新
+
+\end{document}
