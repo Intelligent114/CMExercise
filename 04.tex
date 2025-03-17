@@ -1,0 +1,51 @@
+\documentclass[cn,hazy,green,11pt,normal]{elegantnote}
+\title{计算方法作业\#3}
+
+\author{陈文轩}
+\institute{KFRC}
+
+\date{\today}
+
+\usepackage{amssymb}
+\usepackage{float}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+
+\everymath{\displaystyle}
+
+
+
+\begin{document}
+
+\maketitle
+
+
+\section{题目}
+    \begin{enumerate}
+        \item (6pts)给定函数$f(x)$离散值如下：
+            \begin{table}[H]
+                \begin{center}
+                    \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                    $x$ & $0.00$ & $0.02$ & $0.04$ & $0.06$ \\
+                    \hline
+                    $f(x)$ & $2.5$ & $1.0$ & $2.0$ & $3.5$ \\
+                    \hline
+                    \end{tabular}
+                \end{center}
+            \end{table}
+            分别用向前、向后以及中心差商公式计算$f'(0.02)$和$f'(0.04)$；
+        \item (8pts)用$3$点的Gauss-Legendre数值积分公式求积分$\int_0^2 e^{-x}\sin(x)\diff x$及其积分误差；
+        \item (8pts)试推导积分$\int_0^2 (x-1)^2 f(x)\diff x$的$2$点Gauss积分公式，这里$(x-1)^2$为权重函数；
+        \item (10pts)设函数$f(x)$充分光滑（可微），试推导如下数值微分公式（即确定常数$A,B,C,D,E$），使其截断误差为$O(h^4),f'(x)=\dfrac1h (Af(x-2h)+Bf(x-h)+Cf(x)+Df(x+h)+Ef(x+2h))$。
+
+    \end{enumerate}
+
+    Deadline:2025.3.30
+
+\section{解答}
+
+    截止后更新。
+
+\end{document}
