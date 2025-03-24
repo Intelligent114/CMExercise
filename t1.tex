@@ -1,0 +1,203 @@
+\documentclass{beamer}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{ctex}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+
+\usetheme{Madrid}
+
+\setbeamertemplate{section page}{
+    \begin{centering}
+        \vfill
+        {\usebeamerfont{section title}\Huge \insertsection\par}
+        \vfill
+    \end{centering}
+}
+
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+\everymath{\displaystyle}
+
+\AtBeginSection[]{
+    \begin{frame}
+        \sectionpage
+    \end{frame}
+}
+
+\title{习题课1}
+\author{Author}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{作业1}
+    \begin{frame}{作业1 T1}
+        对$a>0,n\in\mathbb{N_+}$，$x$很靠近$0$，给出$f(x)$的可靠数值计算方法，使其尽量达到更好的精度：$f(x)=(a+x)^n-a^n$；\vspace{1cm}
+
+    \pause \begin{flalign*}
+            \qquad f(x)&=(a+x)^n-a^n=\sum\limits_{k=1}^n C_n^k x^k a^{n-k}\\
+                            &=(\cdots((x+C_n^1 a)x+C_n^2 a^2)x\cdots+C_n^{n-1}a^{n-1})x &
+        \end{flalign*}
+    \end{frame}
+    \begin{frame}{作业1 T2}
+        对$a>0$，$x$很靠近$0$，给出$f(x)$的可靠数值计算方法，使其尽量达到更好的精度：$f(x)=\cos(a-x)-\cos a$；\vspace{1cm}
+
+        \pause 注意：$a-x$不一定靠近0，所以不能直接作Taylor展开
+        \pause \begin{flalign*}
+            \qquad f(x)&=\cos(a-x)-\cos a=\cos a\cos x+\sin a\sin x-\cos a \\
+                            &=\cos a(\cos x-1)+\sin a\sin x\approx-\frac{1}{2}x^2 \cos a+x\sin a
+        \end{flalign*}
+    \end{frame}
+    \begin{frame}{作业1 T3}
+        对$x\gg a$，给出$f(x)$的可靠数值计算方法，使其尽量达到更好的精度：$f(x)=\sqrt{x^2+a}-x$；\vspace{1cm}
+
+        \pause$f(x)=\sqrt{x^2+a}-x=\dfrac{x^2+a-x^2}{\sqrt{x^2+a}+x}=\dfrac{a}{\sqrt{x^2+a}+x}$
+    \end{frame}
+    \begin{frame}{作业1 T4}
+        设有精确值$x^{*}=2023.0905$，则其近似值$x_1=2023.090,x_2=2023.0900$分别有几位有效数字？\vspace{1cm}
+
+        \pause $x_1,x_2$的误差均为$5\times 10^{-4}$，$x_1$有$7$位有效数字，$x_2$有$7$位有效数字。
+    \end{frame}
+
+\section{作业2}
+    \begin{frame}{作业2 T1}
+        利用下面的函数值表，作差商表，写出相应的牛顿插值多项式以及插值误差表达式，并计算$f(1.5)$和$f(4)$的近似值:
+        \begin{table}[H]
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x$ & $1.0$ & $2.0$ & $3.0$ & $4.5$ \\
+                \hline
+                $f(x)$ & $2.5$ & $4.0$ & $3.5$ & $2.0$ \\
+                \hline
+                \end{tabular}
+            \end{center}
+        \end{table}
+        \pause 先计算各阶差商：$f[x_0]=2.5,f[x_1]=4,f[x_2]=3.5,f[x_3]=2;$
+
+        \pause $f[x_0,x_1]=1.5,f[x_1,x_2]=-0.5,f[x_2,x_3]=-1;$
+
+        \pause $f[x_0,x_1,x_2]=-1,f[x_1,x_2,x_3]=-0.2,f[x_0,x_1,x_2,x_3]=\dfrac{8}{35}.$
+
+        \pause 因此，插值多项式$P_3(x)=2.5+1.5(x-1)-(x-1)(x-2)+\dfrac{8}{35}(x-1)(x-2)(x-3),$
+
+        \pause 完全展开可以得到$P_3(x)=\dfrac{8}{35}x^3-\dfrac{83}{35}x^2+\dfrac{491}{70}x-\dfrac{83}{35}.$
+
+        \pause 误差项$R_3(x)=\dfrac{f^{(4)}(\xi)}{24}(x-1)(x-2)(x-3)(x-4.5),\xi\in[1,4.5].$
+
+        \pause $P_3(1.5)=\dfrac{251}{70},P_3(4)=\dfrac{83}{35}.$
+    \end{frame}
+    \begin{frame}{作业2 T2}
+        利用数据$f(0)=2.0,f(1)=1.5,f(3)=0.25,f'(3)=1$构造出三次插值多项式，写出其插值余项，并计算$f(2)$的近似值。\vspace{1cm}
+
+        \pause 设插值多项式$P_3(x)=a_{3}x^3+a_2 x^2+a_1 x_1+a_0$，对应$P_3 '(x)=3a_3 x^2+2a_2 x+a_1;$
+
+        \pause 则有$P_3(0)=a_0=2,P_3(1)=a_3+a_2+a_1+a_0=1.5$
+
+        \pause $P_3(3)=27a_3+9a_2+3a_1+a_0=0.25,P_3 '(3)=27a_3+6a_2+a_1=1$
+
+        \pause $\Rightarrow a_3=\dfrac{41}{144},a_2=-\dfrac{85}{72},a_1=\dfrac{19}{48},a_0=2$
+
+        \pause 所以插值函数为$P_3(x)=\dfrac{41}{144}x_3-\dfrac{85}{72}x^2+\dfrac{19}{48}x+2$，
+
+        \pause 余项为$R_3(x)=\dfrac{f^{(4)}(\xi)}{24}x(x-1)(x-3)^2,\xi\in[0,3];P_3(2)=\dfrac{25}{72}$
+    \end{frame}
+    \begin{frame}{作业2 T3}
+        设$f(x)=20x^3-x+2024$，求$f[1,2,4]$和$f[1,2,3,4]$\vspace{1cm}
+
+        \pause $f[1]=2043,f[2]=2182,f[3]=2561,f[4]=3300;$
+
+        \pause $f[1,2]=139,f[2,3]=379,f[3,4]=739,f[2,4]=559;$
+
+        \pause $f[1,2,3]=120,f[2,3,4]=180,\color{red}{f[1,2,4]=140};$
+
+        \pause $\color{red}{f[1,2,3,4]=20}.$
+    \end{frame}
+    \begin{frame}{作业2 T4}
+        设$\{l_i(x)\}_{i=0}^6$是以$\{x_i=2i\}_{i=0}^6$为节点的$6$次Lagrange插值基函数，求$\sum\limits_{i=0}^6 (x_i^3+x_i^2+1)l_i(x)$和$\sum\limits_{i=0}^6 (x_i^3+x_i^2+1)l_i'(x)$，结果需要化简。\vspace{0.5cm}
+
+        \pause 记$f(x)=x^3+x^2+1$，则$l_i(x)$可以看作对$f(x)$插值时的基函数。
+
+        \pause 由于节点数量为7，$\deg f(x)=3<6$，
+
+        \pause 所以$\sum\limits_{i=0}^6 (x_i^3+x_i^2+1)l_i(x)=f(x)=x^3+x^2+1,$
+
+        \pause $\sum\limits_{i=0}^6 (x_i^3+x_i^2+1)l_i'(x)=f'(x)=3x^2+2x.$
+    \end{frame}
+    \begin{frame}{作业2 T5}
+        设$x_0,x_1,\cdots,x_n(n>2)$为互异的节点，$l_k(x)(k=0,1,\cdots,n)$为与其对应的$n$次Lagrange插值基函数，证明$\sum\limits_{k=0}^n (x_k-x)^n l_k(x)=0$。\vspace{1cm}
+
+        \pause \begin{flalign*}
+            &\sum_{k=0}^n (x_k-x)^n l_k(x) = \sum_{k=0}^n \sum_{m=0}^n \left(\binom{n}{m}x_k^{n-m}(-x)^m\right) l_k(x)  \\
+            =& \sum_{m=0}^n \binom{n}{m} (-x)^m \sum_{k=0}^n x_k^{n-m} l_k(x) =\sum_{m=0}^n \binom{n}{m}(-x)^m x^{n-m}  \\
+            =&(x-x)^n\equiv 0 \\
+        \end{flalign*}
+    \end{frame}
+
+\section{作业3}
+    \begin{frame}{作业3 T1}
+        构造积分$\bar{I}(f)=\int_{-h}^{2h}f(x)\diff x$的数值积分公式$I(f)=a_{-1}f(-h)+a_0 f(0)+a_1 f(2h)$，$h>0$；\vspace{1cm}
+
+        \pause 积分对$p_0(x)=1,p_1(x)=x,p_2(x)=x^2$无误差，对应方程组$\begin{cases}a_{-1}+a_0+a_1=3h\\-2a_{-1}+4a_1=3h\\a_{-1}+4a_1=3h\end{cases}$
+
+        \pause $\quad\Rightarrow a_{-1}=0,a_0=2.25h,a_1=0.75h$
+    \end{frame}
+    \begin{frame}{作业3 T2}
+        分别利用梯形公式和Simpson公式求如下积分及其误差(计算结果至少保留小数点后4位)：$\int_0^2 e^{-x}\sin x\diff x$。\vspace{1cm}
+
+        \pause 准确值：$\int_0^2 e^{-x}\sin x\diff x=-\dfrac12 e^{-x}(\sin x+\cos x)\Big|_0^2\approx 0.46663$；
+
+        \pause $ f(0)=0,f(1)\approx0.30956,f(2)\approx0.12306$；
+
+        \pause Simpson公式:$I_1=\dfrac{b-a}6\left(f(a)+4f\left(\dfrac{a+b}2\right)+f(b)\right)\approx0.4538$，误差约为$0.0128$；
+
+        \pause 梯形公式：$I_2=\dfrac{b-a}{2}(f(a)+f(b))\approx0.12306$，误差约为$0.3436$。
+    \end{frame}
+    \begin{frame}{作业3 T3}
+        记$I(f)=\int_{-2}^2 f(x)\diff x$，设$S(f(x))$为其数值积分公式，其中$I(f)\approx S(f(x))=Af(-\alpha)+Bf(0)+Cf(\alpha)$.\vspace{0.08cm}
+
+        (1)试确定参数$A,B,C,\alpha$使得该数值积分公式具有尽可能高的代数精度，并确定该公式的代数精度(需给出求解过程)；
+
+        (2)设$f(x)$足够光滑(可微)，求该数值积分公式的误差。
+
+        \pause 取$A=C$，积分对$x^{2k+1}$无误差。积分对$p_0(x)=1$,
+
+        \pause $p_2(x)=x^2,p_4(x)=x^4$无误差，对$p_6(x)=x^6$可能有误差。
+
+        \pause 对应方程组$\begin{cases}2A+B=4\\A\alpha^2=\dfrac83\\A\alpha^4=\dfrac{32}5\end{cases}\Longrightarrow\begin{cases}A=C=\dfrac{10}9\\B=\dfrac{16}9\\\alpha=\dfrac25\sqrt{15}\end{cases}$，代数精度为$5$次。
+
+        \pause 误差为$E(f)=\dfrac{E(x^6)}{6!}f^{(6)}(\xi)=\left(\int_{-2}^2 x^6\diff x-S(x^6)\right)\dfrac{f^{(6)}(\xi)}{216}=\dfrac{64}{7875} f^{(6)}(\xi),\xi\in[-2,2]$
+    \end{frame}
+    \begin{frame}{作业3 T4}
+        求满足下表数据以及边界条件$S''(-2)=S''(2)=0(n=3)$的三次样条插值函数$S(x)$，并计算$S(0)$的值。注意：$n$为小区间个数。
+        \begin{table}[H]
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x$ & $-2.00$ & $-1.00$ & $1.00$ & $2.00$ \\
+                \hline
+                $f(x)$ & $-4.00$ & $2.00$ & $2.50$ & $1.50$ \\
+                \hline
+                \end{tabular}
+            \end{center}
+        \end{table}
+
+        \pause $S_i(x)=a_i+b_i(x-x_i)+c_i(x-x_i)^2+d_i(x-x_i)^3,i=0,1,2$
+
+        \pause 满足$S(x_i)=f(x_i),i=0,1,2,3$。记$M_i=S''(x_i)$，
+
+        \pause 则$\dfrac{h_{i-1}}{6}M_{i-1}+\dfrac{h_{i-1}+h_i}{3}M_i+\dfrac{h_i}{6}M_{i+1}=\dfrac{f[x_i,x_{i+1}]-f[x_{i-1},x_i]}{h_i},i=1,2$
+
+        \pause $M_i=0,i=0,3$，其中$h_i=x_{i+1}-x_i$。解方程组得到：
+
+        \pause $\quad S(x)=\begin{cases}-4+6.25(x+2)^2-0.25(x+2)^3,&x\in[-2,-1]\\2+1.75(x+1)-0.75(x+1)^2+0.09375(x+1)^3,&x\in[-1,1]\\2.5-0.9375(x-1)-0.1875(x-1)^2+0.0625(x-1)^3,&x\in[1,2]\end{cases}$
+
+        \pause $\quad$故$S(0)=3.5625=\dfrac{57}{16}$
+    \end{frame}
+
+\end{document}
