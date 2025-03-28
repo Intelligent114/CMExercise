@@ -47,6 +47,11 @@
    - 解答：[实验2答案](./out/lab02.pdf)
    - 代码示例：[实验2代码](./lab02.c)
 
+# 习题课
+
+1. **习题课1**
+   - 讲义：[习题课1讲义](./out/t1.pdf)
+
 # License
 
 This work is released under the LaTeX Project Public License, v1.3c or later. 
