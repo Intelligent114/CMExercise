@@ -1,0 +1,233 @@
+\documentclass[10pt]{beamer}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{ctex}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+\setmainfont{Latin Modern Roman}
+\setmathfont{Latin Modern Math}
+
+
+
+\usetheme{Madrid}
+
+\setbeamertemplate{section page}{
+    \begin{centering}
+        \vfill
+        {\usebeamerfont{section title}\Huge \insertsection\par}
+        \vfill
+    \end{centering}
+}
+
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+\everymath{\displaystyle}
+
+\AtBeginSection[]{
+    \begin{frame}
+        \sectionpage
+    \end{frame}
+}
+
+\title{习题课2}
+\author{陈文轩}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section{作业3}
+    \begin{frame}{作业3 T1}
+        构造积分$\bar{I}(f)=\int_{-h}^{2h}f(x)\diff x$的数值积分公式$I(f)=a_{-1}f(-h)+a_0 f(0)+a_1 f(2h)$，$h>0$；\vspace{1cm}
+
+        \pause 积分对$p_0(x)=1,p_1(x)=x,p_2(x)=x^2$无误差，对应方程组$\begin{cases}a_{-1}+a_0+a_1=3h\\-2a_{-1}+4a_1=3h\\a_{-1}+4a_1=3h\end{cases}$
+
+        \pause $\quad\Rightarrow a_{-1}=0,a_0=2.25h,a_1=0.75h$
+    \end{frame}
+    \begin{frame}{作业3 T2}
+        分别利用梯形公式和Simpson公式求如下积分及其误差(计算结果至少保留小数点后4位)：$\int_0^2 e^{-x}\sin x\diff x$。\vspace{1cm}
+
+        \pause 准确值：$\int_0^2 e^{-x}\sin x\diff x=-\dfrac12 e^{-x}(\sin x+\cos x)\Big|_0^2\approx 0.46663$；
+
+        \pause $ f(0)=0,f(1)\approx0.30956,f(2)\approx0.12306$；
+
+        \pause Simpson公式:$I_1=\dfrac{b-a}6\left(f(a)+4f\left(\dfrac{a+b}2\right)+f(b)\right)\approx0.4538$，误差约为$0.0128$；
+
+        \pause 梯形公式：$I_2=\dfrac{b-a}{2}(f(a)+f(b))\approx0.12306$，误差约为$0.3436$。
+    \end{frame}
+    \begin{frame}{作业3 T3}
+        记$I(f)=\int_{-2}^2 f(x)\diff x$，设$S(f(x))$为其数值积分公式，其中$I(f)\approx S(f(x))=Af(-\alpha)+Bf(0)+Cf(\alpha)$.\vspace{0.08cm}
+
+        (1)试确定参数$A,B,C,\alpha$使得该数值积分公式具有尽可能高的代数精度，并确定该公式的代数精度(需给出求解过程)；
+
+        (2)设$f(x)$足够光滑(可微)，求该数值积分公式的误差。
+
+        \pause 取$A=C$，积分对$x^{2k+1}$无误差。积分对$p_0(x)=1$,
+
+        \pause $p_2(x)=x^2,p_4(x)=x^4$无误差，对$p_6(x)=x^6$可能有误差。
+
+        \pause 对应方程组$\begin{cases}2A+B=4\\A\alpha^2=\dfrac83\\A\alpha^4=\dfrac{32}5\end{cases}\Longrightarrow\begin{cases}A=C=\dfrac{10}9\\B=\dfrac{16}9\\\alpha=\dfrac25\sqrt{15}\end{cases}$，代数精度为$5$次。
+
+        \pause 误差为$E(f)=\dfrac{E(x^6)}{6!}f^{(6)}(\xi)=\left(\int_{-2}^2 x^6\diff x-S(x^6)\right)\dfrac{f^{(6)}(\xi)}{216}=\dfrac{64}{7875} f^{(6)}(\xi),\xi\in[-2,2]$
+    \end{frame}
+    \begin{frame}{作业3 T4}
+        求满足下表数据以及边界条件$S''(-2)=S''(2)=0(n=3)$的三次样条插值函数$S(x)$，并计算$S(0)$的值。注意：$n$为小区间个数。
+        \begin{table}[H]
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x$ & $-2.00$ & $-1.00$ & $1.00$ & $2.00$ \\
+                \hline
+                $f(x)$ & $-4.00$ & $2.00$ & $2.50$ & $1.50$ \\
+                \hline
+                \end{tabular}
+            \end{center}
+        \end{table}
+
+        \pause $S_i(x)=a_i+b_i(x-x_i)+c_i(x-x_i)^2+d_i(x-x_i)^3,i=0,1,2$
+
+        \pause 满足$S(x_i)=f(x_i),i=0,1,2,3$。记$M_i=S''(x_i)$，则
+
+        \pause $\dfrac{h_{i-1}}{6}M_{i-1}+\dfrac{h_{i-1}+h_i}{3}M_i+\dfrac{h_i}{6}M_{i+1}=\dfrac{f[x_i,x_{i+1}]-f[x_{i-1},x_i]}{h_i},i=1,2$
+
+        \pause $M_i=0,i=0,3$，其中$h_i=x_{i+1}-x_i$。解方程组得到：
+
+        \pause $\quad S(x)=\begin{cases}-4+6.25(x+2)^2-0.25(x+2)^3,&x\in[-2,-1]\\2+1.75(x+1)-0.75(x+1)^2+0.09375(x+1)^3,&x\in[-1,1]\\2.5-0.9375(x-1)-0.1875(x-1)^2+0.0625(x-1)^3,&x\in[1,2]\end{cases}$
+
+        \pause $\quad$故$S(0)=3.5625=\dfrac{57}{16}$
+    \end{frame}
+
+\section{作业4}
+    \begin{frame}{作业4 T1}
+        给定函数$f(x)$离散值如下：
+        \begin{table}[H]
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x$ & $0.00$ & $0.02$ & $0.04$ & $0.06$ \\
+                \hline
+                $f(x)$ & $2.5$ & $1.0$ & $2.0$ & $3.5$ \\
+                \hline
+                \end{tabular}
+            \end{center}
+        \end{table}
+        分别用向前、向后以及中心差商公式计算$f'(0.02)$和$f'(0.04)$；\vspace{1cm}
+
+        \pause 向前差分：$f'(0.02)=\dfrac{f(0.04)-f(0.02))}{0.02}=50,f'(0.04)=\dfrac{f(0.06)-f(0.04)}{0.02}=75;$
+
+        \pause 向后差分：$f'(0.02)=\dfrac{f(0.02)-f(0.00)}{0.02}=-75,f'(0.04)=\dfrac{f(0.04)-f(0.02)}{0.02}=50;$
+
+        \pause 中心差分：$f'(0.02)=\dfrac{f(0.04)-f(0.00)}{0.04}=-12.5,f'(0.04)=\dfrac{f(0.06)-f(0.02)}{0.04}=62.5$。
+    \end{frame}
+    \begin{frame}{作业4 T2}
+        用$3$点的Gauss-Legendre数值积分公式求积分$\int_0^2 e^{-x}\sin(x)\diff x$及其积分误差；\vspace{1cm}
+
+        \pause 准确值：$0.4666$。
+
+        \pause 先换元$\int_{-1}^1 e^{-t-1}\sin(t+1)\diff t$，记$g(t)=e^{-t-1}\sin(t+1)$，
+
+        \pause $I(g)=\dfrac59 g\left(-\sqrt{\dfrac35}\right)+\dfrac89 g(0)+\dfrac59 g\left(\sqrt{\dfrac35}\right)\approx0.4663$，
+    \end{frame}
+    \begin{frame}{作业4 T3}
+        试推导积分$\int_0^2 (x-1)^2 f(x)\diff x$的$2$点Gauss积分公式，这里$(x-1)^2$为权重函数；\vspace{1cm}
+
+        \pause 先换元为$\int_{-1}^1 t^2 f(t+1)\diff t$，此时通过$G-S$正交化得到正交多项式为：
+
+        \pause $p_2(t)=t^2-\dfrac35$，节点为$\alpha_1=-\sqrt{\dfrac35},\alpha_2=\sqrt{\dfrac35}$，由于对称性，
+
+        \pause 权重相等，代入$f(t)=1$时无误差，得到$W_1=W_2=\dfrac13$，
+
+        \pause 故$I(f)=\dfrac13 f\left(1-\sqrt{\dfrac35}\right)+\dfrac13f\left(1+\sqrt{\dfrac35}\right)$。
+    \end{frame}
+    \begin{frame}{作业4 T4}
+        设函数$f(x)$充分光滑，试推导如下数值微分公式，使其截断误差为$O(h^4),f'(x)=\dfrac1h (Af(x-2h)+Bf(x-h)+Cf(x)+Df(x+h)+Ef(x+2h))$。\vspace{1cm}
+
+        \pause 作Taylor展开至$O(h^5)$，有：
+
+        \pause $f(x+h)=f(x)+hf'(x)+\dfrac12 h^2 f''(x)+\dfrac16 h^3 f'''(x)+\dfrac1{24} h^4 f''''(x)+O(h^5)$
+
+        \pause $ f(x-h)=f(x)-hf'(x)+\dfrac12 h^2 f''(x)-\dfrac16 h^3 f'''(x)+\dfrac1{24} h^4 f''''(x)+O(h^5)$
+
+        \pause $ f(x+2h)=f(x)+2hf'(x)+2h^2 f''(x)+\dfrac43 h^3 f'''(x)+\dfrac23 h^4 f''''(x)+O(h^5)$
+
+        \pause $ f(x-2h)=f(x)-2hf'(x)+2h^2 f''(x)-\dfrac43 h^3 f'''(x)+\dfrac23 h^4 f''''(x)+O(h^5)$
+    \end{frame}
+    \begin{frame}{作业4 T4}
+        设函数$f(x)$充分光滑，试推导如下数值微分公式，使其截断误差为$O(h^4),f'(x)=\dfrac1h (Af(x-2h)+Bf(x-h)+Cf(x)+Df(x+h)+Ef(x+2h))$。
+
+        \pause\begin{flalign*}
+            & Af(x-2h)+Bf(x-h)+Cf(x)+Df(x+h)+Ef(x+2h) &\\
+            =&(A+B+C+D+E)f(x)+(-2A-B+D+2E)hf'(x)&\\
+            &+(2A+\dfrac12 B+\frac12 D+2E)h^2 f''(x)+(-\dfrac 43 A-\dfrac16 B+\dfrac16 D+\dfrac43 E)h^3 f'''(x) &\\
+            &+(\dfrac 23 A-\dfrac1{24} B+\dfrac1{24} D+\dfrac23 E)h^4 f''''(x)&\\
+            \coloneqq& hf'(x)+O(h^5)&
+        \end{flalign*}
+    \end{frame}
+
+    \begin{frame}{作业4 T4}
+        设函数$f(x)$充分光滑，试推导如下数值微分公式，使其截断误差为$O(h^4),f'(x)=\dfrac1h (Af(x-2h)+Bf(x-h)+Cf(x)+Df(x+h)+Ef(x+2h))$。\vspace{1cm}
+
+        \pause $\Rightarrow\begin{cases}A+B+C+D+E=0\\-2A-B+D+2E=1\\(2A+\dfrac12 B+\frac12 D+2E=0\vspace{0.2cm}\\-\dfrac 43 A-\dfrac16 B+\dfrac16 D+\dfrac43 E=0\vspace{0.2cm}\\\dfrac 23 A-\dfrac1{24} B+\dfrac1{24} D+\dfrac23E=0\end{cases}\Rightarrow\begin{cases}A=\dfrac1{12} \vspace{0.2cm}\\B=-\dfrac23\\ C=0\\D=\dfrac23\vspace{0.2cm}\\E=\dfrac1{12}\end{cases}$
+
+        \pause 因此数值微分公式为$f'(x)=\frac{-f(x+2h)+8f(x+h)-8f(x-h)+f(x-2h)}{12h}+O(h^4)$。
+    \end{frame}
+
+\section{课堂作业}
+    \begin{frame}{课堂作业1}
+        推导二阶导数的微分误差\vspace{1cm}
+
+        \pause $f(x)-L_2(x)=\dfrac{f'''(\xi)}{3!}(x-x_0)(x-x_1)(x-x_2)$\vspace{-0.5cm}
+
+        \pause \begin{flalign*}
+             &f''(x)-L_2''(x)&\\
+            =&2\left(\dfrac{\diff}{\diff x}\dfrac{f'''(\xi)}{3!}\right)((x-x_1)(x-x_2)+(x-x_0)(x-x_1)+(x-x_0)(x-x_2))&\\
+             &+\left(\dfrac{\diff^2}{\diff x^2}\dfrac{f'''(\xi)}{3!}\right)(x-x_0)(x-x_1)(x-x_2)&\\
+             &+2\cdot\dfrac{f'''(\xi)}{3!}((x-x_0)+(x-x_1)+(x-x_2))&\\
+        \end{flalign*}
+
+        \pause \vspace{-0.9cm}$f''(x_0)-L_2''(x_0)=2\left(\dfrac{\diff}{\diff x}\dfrac{f'''(\xi)}{3!}\right)2h^2+\dfrac{f'''(\xi)}{3!}(-6h)=O(h)$
+    \end{frame}
+    \begin{frame}{课堂作业2}
+        计算Runge-Kutta方法中的$y''',y''''$\vspace{1cm}
+
+        \pause $y'(x)=f(x,y)$
+
+        \pause $y''(x)=f_x(x,y)+f_y(x,y)\cdot y'(x)=f_x+ff_y$
+
+        \pause $y'''(x)=f_{xx}+f_{xy}y'+f_y(f_x+ff_y)+f(f_{xy}+f_{yy}f_y)$
+
+                $\qquad\quad=f_{xx}+2f_{xy}f+f_{yy}f^2+f_x f_y+ff_y^2$
+
+        \pause $\dfrac{\diff}{\diff x}f_{xx}=f_{xxx}+f_{xx}f,$\pause $\qquad\dfrac{\diff}{\diff x}(f_{xy})f=f_{xy}(f_x+ff_y)+(f_{xxy}+f_{xyy}f)f$
+
+        \pause $\dfrac{\diff}{\diff x}(f_{yy}f^2)=(f_{xyy}+f_{yyy}f)f^2+2ff_{yy}(f_x+ff_y)$
+
+        \pause $\dfrac{\diff}{\diff x}(f_x f_y)=f_x(f_{xx}+f_{xy}f)+f_x(f_{xy}+f_{yy}f)$
+
+        \pause $\dfrac{\diff}{\diff x}(ff_y^2)=(f_x+ff_y)f_y^2+2ff_y(f_{xy}+f_{yy}f)$
+
+        \pause $y''''(x)=ff_y^3+4f^2 f_y f_{yy}+f^3 f_{yyy}+f_y^2 f_x+3ff_x f_{yy}+5ff_y f_{xy}+3f_x f_{xy}$
+
+                $\qquad\qquad +3f^2 f_{xyy}+f_y f_{xx}+3ff_{xxy}+f_{xxx}$
+    \end{frame}
+    \begin{frame}{课堂作业3}
+        讨论梯形格式$y_{n+1}=y_n+\frac h2(f(x_n,y_n)+f(x_{n+1},y_{n+1}))$的绝对稳定性，$h>0$。\vspace{1cm}
+
+        \pause 令$f(x,y)=\lambda y$，则有$y_{n+1}=y_n+\dfrac{h\lambda}2(y_n+y_{n+1})$。令$z=\lambda h$，则
+
+        \pause $\xi=\dfrac{y_{n+1}}{y_n}=\dfrac{2+z}{2-z}$。由于$|\xi|<1$当且仅当$\mathrm{Re}(z)<0^{(*)}\Leftrightarrow\mathrm{Re}(\lambda)<0$，
+
+        \pause 故梯形格式是A-稳定的。\vspace{0.5cm}
+
+        \pause (*)对$z=a+bi,|\xi|^2=\dfrac{(2+a)^2+b^2}{(2-a)^2+b^2}$，$|\xi|^2<1$时应有
+
+        \pause $\qquad(2+a)^2+b^2<(2-a)^2+b^2\Rightarrow 4a<-4a\Rightarrow a<0$，即$\mathrm{Re}(z)<0$。
+
+    \end{frame}
+
+\end{document}
