@@ -61,11 +61,11 @@
         \pause 梯形公式：$I_2=\dfrac{b-a}{2}(f(a)+f(b))\approx0.12306$，误差约为$0.3436$。
     \end{frame}
     \begin{frame}{作业3 T3}
-        记$I(f)=\int_{-2}^2 f(x)\diff x$，设$S(f(x))$为其数值积分公式，其中$I(f)\approx S(f(x))=Af(-\alpha)+Bf(0)+Cf(\alpha)$.\vspace{0.08cm}
+        记$I(f)=\int_{-2}^2 f(x)\diff x$，设$S(f(x))$为其数值积分公式，其中$I(f)\approx S(f(x))=Af(-\alpha)+Bf(0)+Cf(\alpha)$.
 
         (1)试确定参数$A,B,C,\alpha$使得该数值积分公式具有尽可能高的代数精度，并确定该公式的代数精度(需给出求解过程)；
 
-        (2)设$f(x)$足够光滑(可微)，求该数值积分公式的误差。
+        (2)设$f(x)$足够光滑(可微)，求该数值积分公式的误差。\vspace{0.38cm}
 
         \pause 取$A=C$，积分对$x^{2k+1}$无误差。积分对$p_0(x)=1$,
 
@@ -74,6 +74,18 @@
         \pause 对应方程组$\begin{cases}2A+B=4\\A\alpha^2=\dfrac83\\A\alpha^4=\dfrac{32}5\end{cases}\Longrightarrow\begin{cases}A=C=\dfrac{10}9\\B=\dfrac{16}9\\\alpha=\dfrac25\sqrt{15}\end{cases}$，代数精度为$5$次。
 
         \pause 误差为$E(f)=\dfrac{E(x^6)}{6!}f^{(6)}(\xi)=\left(\int_{-2}^2 x^6\diff x-S(x^6)\right)\dfrac{f^{(6)}(\xi)}{216}=\dfrac{64}{7875} f^{(6)}(\xi),\xi\in[-2,2]$
+    \end{frame}
+    \begin{frame}{作业3 T3}
+        记$I(f)=\int_{-2}^2 f(x)\diff x$，设$S(f(x))$为其数值积分公式，其中$I(f)\approx S(f(x))=Af(-\alpha)+Bf(0)+Cf(\alpha)$.
+
+        设$f(x)$足够光滑(可微)，求该数值积分公式的误差。\vspace{0.38cm}
+
+        \pause\begin{flalign*}
+            E(f)&=I(f)-S(f)=\dfrac{f^{(2n)}(\xi)}{(2n)!}\int_a^b W(x)\omega_n^2(x)\diff x&\\
+                &=\dfrac{f^{(6)}(\xi)}{6!}\int_{-2}^2(x-\alpha)^2 x^2(x+\alpha)^2\diff x=\dfrac{f^{(6)}(\xi)}{6!}\int_{-2}^2(x^2-\dfrac{12}{5})^2 x^2\diff x&\\
+                &=\dfrac{f^{(6)}(\xi)}{6!}\int_{-2}^2(x^6-\dfrac{24}{5}x^4+\dfrac{144}{25}x^2)\diff x&\\
+                &=\dfrac{f^{(6)}(\xi)}{6!}\cdot\dfrac{1024}{175}=\dfrac{64}{7875} f^{(6)}(\xi),\xi\in[-2,2]&
+        \end{flalign*}
     \end{frame}
     \begin{frame}{作业3 T4}
         求满足下表数据以及边界条件$S''(-2)=S''(2)=0(n=3)$的三次样条插值函数$S(x)$，并计算$S(0)$的值。注意：$n$为小区间个数。
@@ -131,7 +143,7 @@
 
         \pause 先换元$\int_{-1}^1 e^{-t-1}\sin(t+1)\diff t$，记$g(t)=e^{-t-1}\sin(t+1)$，
 
-        \pause $I(g)=\dfrac59 g\left(-\sqrt{\dfrac35}\right)+\dfrac89 g(0)+\dfrac59 g\left(\sqrt{\dfrac35}\right)\approx0.4663$，
+        \pause $I(g)=\dfrac59 g\left(-\sqrt{\dfrac35}\right)+\dfrac89 g(0)+\dfrac59 g\left(\sqrt{\dfrac35}\right)\approx0.4665$，
     \end{frame}
     \begin{frame}{作业4 T3}
         试推导积分$\int_0^2 (x-1)^2 f(x)\diff x$的$2$点Gauss积分公式，这里$(x-1)^2$为权重函数；\vspace{1cm}
@@ -228,6 +240,9 @@
 
         \pause $\qquad(2+a)^2+b^2<(2-a)^2+b^2\Rightarrow 4a<-4a\Rightarrow a<0$，即$\mathrm{Re}(z)<0$。
 
+    \end{frame}
+    \begin{frame}{课堂作业4}
+        设$f(x)$为$\mathbb{R}$上的光滑实值函数，$r\in\mathbb{R}$为$f(x)$的一个二重根，试推导牛顿迭代法在根$r$附近的收敛阶。
     \end{frame}
 
 \end{document}

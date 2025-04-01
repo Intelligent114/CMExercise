@@ -1,5 +1,5 @@
 \documentclass[cn,hazy,green,11pt,normal]{elegantnote}
-\title{计算方法作业\#3}
+\title{计算方法作业\#4}
 
 \author{陈文轩}
 \institute{KFRC}
@@ -8,6 +8,7 @@
 
 \usepackage{amssymb}
 \usepackage{float}
+\usepackage{mathtools}
 
 \newcommand*{\diff}{\mathop{}\!\mathrm{d}}
 
@@ -46,6 +47,40 @@
 
 \section{解答}
 
-    截止后更新。
+    $1.\,\,$向前差分：$f'(0.02)=\dfrac{f(0.04)-f(0.02))}{0.02}=50,f'(0.04)=\dfrac{f(0.06)-f(0.04)}{0.02}=75;$
+
+    $\quad$向后差分：$f'(0.02)=\dfrac{f(0.02)-f(0.00)}{0.02}=-75,f'(0.04)=\dfrac{f(0.04)-f(0.02)}{0.02}=50;$
+
+    $\quad$中心差分：$f'(0.02)=\dfrac{f(0.04)-f(0.00)}{0.04}=-12.5,f'(0.04)=\dfrac{f(0.06)-f(0.02)}{0.04}=62.5$。
+
+    $2.\,\,$准确值：$0.4666$。先换元$\int_{-1}^1 e^{-t-1}\sin(t+1)\diff t$，记$g(t)=e^{-t-1}\sin(t+1)$，
+
+    $\quad I(g)=\dfrac59 g\left(-\sqrt{\dfrac35}\right)+\dfrac89 g(0)+\dfrac59 g\left(\sqrt{\dfrac35}\right)\approx0.4665$，
+
+    $3.\,\,$先换元为$\int_{-1}^1 t^2 f(t+1)\diff t$，此时$\alpha_1=-\sqrt{\dfrac35},\alpha_2=\sqrt{\dfrac35}$，由于对称性，权重相等，代入
+
+    $\quad$$f(t)=1$时无误差，得到$W_1=W_2=\dfrac13$，故$I(f)=\dfrac13 f\left(1-\sqrt{\dfrac35}\right)+\dfrac13f\left(1+\sqrt{\dfrac35}\right)$。
+
+    $4.\,\,$作Taylor展开至$O(h^5)$，有：
+
+    $\quad f(x+h)=f(x)+hf'(x)+\dfrac12 h^2 f''(x)+\dfrac16 h^3 f'''(x)+\dfrac1{24} h^4 f''''(x)+O(h^5)$
+
+    $\quad f(x-h)=f(x)-hf'(x)+\dfrac12 h^2 f''(x)-\dfrac16 h^3 f'''(x)+\dfrac1{24} h^4 f''''(x)+O(h^5)$
+
+    $\quad f(x+2h)=f(x)+2hf'(x)+2h^2 f''(x)+\dfrac43 h^3 f'''(x)+\dfrac23 h^4 f''''(x)+O(h^5)$
+
+    $\quad f(x-2h)=f(x)-2hf'(x)+2h^2 f''(x)-\dfrac43 h^3 f'''(x)+\dfrac23 h^4 f''''(x)+O(h^5)$\vspace{-0.9cm}
+
+    \begin{flalign*}
+        \qquad\qquad& Af(x-2h)+Bf(x-h)+Cf(x)+Df(x+h)+Ef(x+2h) &\\
+        =&(A+B+C+D+E)f(x)+(-2A-B+D+2E)hf'(x)&\\
+        &+(2A+\dfrac12 B+\frac12 D+2E)h^2 f''(x)+(-\dfrac 43 A-\dfrac16 B+\dfrac16 D+\dfrac43 E)h^3 f'''(x) &\\
+        &+(\dfrac 23 A-\dfrac1{24} B+\dfrac1{24} D+\dfrac23 E)h^4 f''''(x)&\\
+        \coloneqq& hf'(x)+O(h^5)&
+    \end{flalign*}\vspace{-0.9cm}
+
+    $\quad\Rightarrow\begin{cases}A+B+C+D+E=0\\-2A-B+D+2E=1\\(2A+\dfrac12 B+\frac12 D+2E=0\vspace{0.2cm}\\-\dfrac 43 A-\dfrac16 B+\dfrac16 D+\dfrac43 E=0\vspace{0.2cm}\\\dfrac 23 A-\dfrac1{24} B+\dfrac1{24} D+\dfrac23E=0\end{cases}\Rightarrow\begin{cases}A=\dfrac1{12} \vspace{0.2cm}\\B=-\dfrac23\\ C=0\\D=\dfrac23\vspace{0.2cm}\\E=\dfrac1{12}\end{cases}$
+
+    $\quad$因此数值微分公式为$f'(x)=\frac{-f(x+2h)+8f(x+h)-8f(x-h)+f(x-2h)}{12h}+O(h^4)$。
 
 \end{document}
