@@ -5,7 +5,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="32">
+          <list size="33">
             <item index="0" class="java.lang.String" itemvalue="httpx" />
             <item index="1" class="java.lang.String" itemvalue="torchmetrics" />
             <item index="2" class="java.lang.String" itemvalue="gradio" />
@@ -38,6 +38,7 @@
             <item index="29" class="java.lang.String" itemvalue="open_clip_torch" />
             <item index="30" class="java.lang.String" itemvalue="langchain_llm_api" />
             <item index="31" class="java.lang.String" itemvalue="controlnet-aux" />
+            <item index="32" class="java.lang.String" itemvalue="scikit_learn" />
           </list>
         </value>
       </option>
