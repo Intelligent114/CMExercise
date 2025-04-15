@@ -9,6 +9,7 @@
 \usepackage{amssymb}
 \usepackage{float}
 \usepackage{mathtools}
+\usepackage{extarrows}
 
 \newcommand*{\diff}{\mathop{}\!\mathrm{d}}
 
@@ -35,6 +36,28 @@
 
 \section{解答}
 
+    $1.\,\,f(x)=e^x-2,f'(x)=e^x$，迭代公式为$x_{n+1}=x_n-\dfrac{e^{x_n}-2}{e^{x_n}}$。
 
+    $\quad x_0=0.618,x_1=0.69600,x_2=0.693151,x_3=0.69314718056,x_4=0.6931471805599453,$
 
+    $\quad x_5=0.69314718055994530941723212145818$。实际上，$x_5$的误差在$10^{-45}$量级。
+
+    $2.\,\,f(x)=x^n-a,f'(x)=nx^{n-1}$，迭代公式为$x_{n+1}=x_n-\dfrac{x^n-a}{nx_n^{n-1}}$
+
+    $\quad x_0=5,x_1=4.648,x_2=4.5858,x_3=4.58464,x_4=4.58443$。
+
+    $3.\,\,f(x)=x^3-4x^2+5x-2,f'(x)=3x^2-8x+5$，迭代公式为$x_{n+1}=x_n+\dfrac{x_n^3-4x_n^2+5x_n-2}{3x_n^2-8x_n+5}$。
+
+    $4.\,\,$设$f(x)=(x-r)^p g(x),g(r\neq0),f'(x)=p(x-r)^{r-1}g(x)+(x-r)^p g'(x)$，令$e_k=x_k-r$，
+
+    $\quad$则$r$附近$f(x_k)=e_k^{p}g(x_k),f'(x_k)=e_k^{p-1}(pg(x_k)+e_k g'(x_k))$，带入迭代公式，
+
+    $\quad x_{k+1}=x_k-\dfrac{e_k^{p}g(x_k)}{e_k^{p-1}(pg(x_k)+e_k g'(x_k))}=x_k-\dfrac{e_k g(x_k)}{pg(x_k)+e_k g'(x_k)}$，两边同时减去$r$，\vspace{-0.5cm}
+
+    \begin{flalign*}
+        \qquad\quad e_{k+1}&=e_k-\dfrac{e_k g(x_k)}{pg(x_k)+e_k g'(x_k)}=e_k(1-\dfrac{pg(x_k)}{pg(x_k)+e_k g'(x_k)})=e_k\cdot\dfrac{e_k g'(x_k)}{pg(x_k)+e_k g'(x_k)}&\\
+                            &=e_k^2\cdot\dfrac{g'(x_k)}{pg(x_k)+e_k g'(x_k)}\xlongequal{C\coloneqq \frac{g'(r)}{pg(r)}}Ce_k^2&
+    \end{flalign*}
+
+    $\quad$因此迭代公式是二次收敛的。
 \end{document}

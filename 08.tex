@@ -1,0 +1,55 @@
+\documentclass[cn,hazy,green,11pt,normal]{elegantnote}
+\title{计算方法作业\#8}
+
+\author{陈文轩}
+\institute{KFRC}
+
+\date{\today}
+
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{mathtools}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+
+
+\begin{document}
+
+\maketitle
+
+\section{题目}
+
+
+    \begin{enumerate}
+        
+        \item (10pts)设有线性方程组$Ax=b$，其中，\textcolor{blue}{\[A=\begin{bmatrix}2&-1&0&0\\-1&2&-1&0\\0&-1&2&-1\\0&0&-1& 2\end{bmatrix},\quad b=\begin{bmatrix}2\\0\\2\\4\end{bmatrix}\]}
+            \begin{enumerate}
+                \item 写出Jacobi迭代的迭代格式（\textcolor{red}{分量形式}）；
+                \item 求Jacobi迭代的\textcolor{red}{迭代矩阵}；
+                \item 讨论此时Jacobi迭代法的收敛性（请给出理由或证明）。
+            \end{enumerate}
+
+        \item (10pts)设有线性方程组\textcolor{blue}{\[\begin{cases}5x_1-3x_2+2x_3&=10\\-3x_1+5x_2+2x_3&=20\\2x_1+2x_2+5x_3&=50\end{cases}\]}
+            \begin{enumerate}
+                \item 分别写出Gauss-Seidel迭代和SOR迭代的\textcolor{red}{分量形式}；
+                \item 求Gauss-Seidel迭代的分裂矩阵（splitting matrix）及迭代矩阵（iteration matrix）；
+                \item 讨论Gauss-Seidel迭代法的收敛性（请给出理由或证明）。
+            \end{enumerate}
+
+        \item (10pts)设有线性方程组$Ax=b$，其中，\textcolor{blue}{$A=\begin{bmatrix}3&2\\1&2\end{bmatrix},\quad b=\begin{bmatrix}3\\4\end{bmatrix}$}。
+
+            利用如下迭代公式解此方程\textcolor{blue}{\[x^{(k+1)}=x^{(k)}+\alpha (b-Ax^{(k)}),\quad 0 \neq\alpha\in\mathbb{R}\]}
+            \begin{enumerate}
+                \item 写出此迭代法的迭代矩阵；
+                \item 求使该迭代法收敛时参数$\alpha$的最大取值范围；
+                \item 当$\alpha$取何值时，迭代收敛速度最快。
+            \end{enumerate}
+
+    \end{enumerate}
+
+    Deadline:2025.4.27
+
+\section{解答}
+
+\end{document}
