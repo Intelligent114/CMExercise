@@ -1,0 +1,111 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\usepackage{tikz}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{pgfplots}
+\usepackage{mathtools}
+\usepackage{multirow}
+\geometry{left=2.18cm,right=2.18cm,top=1.54cm,bottom=2.0cm}
+\pagestyle{empty}
+\pgfplotsset{compat=1.18}
+\title{\textbf {2025春计算方法--实验报告 \#4}}
+\author{姓名：\underline{~~~~~~~~~~~}  学号：\underline{~~~~~~~~~~~~~~~~~} }
+\date{\today}
+
+
+\begin{document}
+
+
+\maketitle
+
+运行环境：\underline{~~~~~~~~~~~~}
+
+\section*{实验内容与要求}
+    \textbf{线性方程组的迭代法}
+
+
+    {\color{blue} 实验内容}:考虑线性方程组$\color{blue}{(H + 2.25 I )x = b}$,其中$I$为单位阵,$H$为n阶{\color{blue}Hilbert矩阵},
+    \[\color{blue}{H=(h_{ij})_{n\times n}, \qquad  h_{ij}=\frac{1}{i+j-1},\quad i,j=1,2,\cdots,n}\]
+    通过先给{\color{blue}定解}, 比如{\color{red}\textbf{取$x$的各个分量为1}}, 再计算出右端向量$\color{blue}b$的办法给出一个精确解已知的问题.
+
+    {\color{blue} 实验要求}：
+
+    (1) 分别编写~Jacobi~迭代法,~Gauss-Seidel~迭代法的一般程序({\color{red}不得使用符号运算})；
+
+    (2) 所有迭代的{\color{red}初始向量均取为$0$向量, 停止条件为$\|x^{(k+1)}-x^{(k)}\|_1<\epsilon \coloneqq 1\times 10^{-5}$或迭代步数超过50万(可视为迭代失败)};
+
+    (3) 用以上二种迭代去求解前述的方程组,
+    分别取阶数~{\color{red} n=10,30,100,500,1500,5000(optional)};
+
+    (4) 列表给出\textbf{各自}{\color{blue}数值解}的计算误差(\textbf{\color{red} 1-范数下})以及{\color{blue}迭代步数}; 报告数值实验过程中可能出现的计算问题;
+
+    (5) \textbf{分析并比较以上二种迭代方法, 你能得出什么结论或经验教训．}
+    \clearpage
+
+
+\section{数值结果}
+
+    \textbf {数值解误差及迭代步数}
+
+    \begin{table}[ht]
+        \centering
+        \begin{tabular}{|c|c|c|c|}
+            \hline
+            $n$                          & 迭代法           & 迭代步数                & 绝对误差$\|x^{(k)}-x\|_1$\\
+            \hline
+            \multirow{2}{*}{$n=10$}      & Jacobi          & ---                   & ---                     \\
+                                         & Gauss-Seidel    & ---                   & ---                     \\
+            \hline
+            \multirow{2}{*}{$n=30$}      & Jacobi          & ---                   & ---                     \\
+                                         & Gauss-Seidel    & ---                   & ---                     \\
+            \hline
+            \multirow{2}{*}{$n=100$}     & Jacobi          & ---                   & ---                     \\
+                                         & Gauss-Seidel    & ---                   & ---                     \\
+            \hline
+            \multirow{2}{*}{$n=500$}     & Jacobi          & ---                   & ---                     \\
+                                         & Gauss-Seidel    & ---                   & ---                     \\
+            \hline
+            \multirow{2}{*}{$n=1500$}    & Jacobi          & ---                   & ---                     \\
+                                         & Gauss-Seidel    & ---                   & ---                     \\
+            \hline
+            \multirow{2}{*}{$n=5000$}    & Jacobi          & ---                   & ---                     \\
+                                         & Gauss-Seidel    & ---                   & ---                     \\
+            \hline
+        \end{tabular}
+        \caption{Jacobi与Gauss-Seidel迭代法的比较}
+        \label{tab:tab1}
+    \end{table}
+
+
+\section{算法分析}
+    \begin{itemize}
+        \item Blah blah blah
+        \item Blah blah blah
+        \item Blah blah blah
+    \end{itemize}
+
+
+\section{实验小结}
+    \textbf{计算过程中可能出现的问题(包括这次实验中的体会，收获或经验教训)}：
+    \begin{itemize}
+        \item  Blah blah blah,
+        \item  Blah blah blah,
+    \end{itemize}
+
+    \textbf{比较三种算法的各自优缺点}：
+    \begin{itemize}
+        \item  Blah blah blah,
+        \item  Blah blah blah,
+        \item Blah blah blah,
+    \end{itemize}
+
+
+\end{document}
+
+
