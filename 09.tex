@@ -1,0 +1,40 @@
+\documentclass[cn,hazy,green,11pt,normal]{elegantnote}
+\title{计算方法作业\#9}
+
+\author{陈文轩}
+\institute{KFRC}
+
+\date{\today}
+
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{mathtools}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+
+
+\begin{document}
+
+\maketitle
+
+\section{题目}
+
+
+    \begin{enumerate}
+
+    \item (4pts)设$\textcolor{blue}{n}$阶实方阵$\textcolor{blue}{A}$有相异的特征根$\textcolor{blue}{|\lambda_1|>|\lambda_2|>\cdots>|\lambda_n|>0}$。对给定的实数$\textcolor{blue}{\alpha\neq\lambda_i}$ ($\textcolor{blue}{i=1,2,\cdots,n}$)，利用规范幂法或规范反幂法，设计一个能计算离$\textcolor{blue}{\alpha}$ \textcolor{red}{距离最近}的矩阵$\textcolor{blue}{A}$的特征根的迭代格式（注：不容许对矩阵求逆）。
+
+    \item (8pts)考虑用Jacobi方法计算矩阵$\textcolor{blue}{A=\begin{bmatrix}7&1&2\\1&4&0\\2&0&3\end{bmatrix}}$的特征值。求对$\textcolor{blue}{A}$作一次Givens相似变换时的Givens（旋转）变换矩阵$\textcolor{blue}{Q}$（要求相应的计算效率最高）以及Givens变换后的矩阵$\textcolor{blue}{B}$（其中，$\textcolor{blue}{B=Q^{\top} AQ}$）。
+
+    \item (8pts)设$\textcolor{blue}{p<q}$，$\textcolor{blue}{Q(p,q,\theta)}$为$\textcolor{blue}{n}$阶\textcolor{red}{Givens}矩阵，$\textcolor{blue}{\theta}$为角度。记\[\textcolor{blue}{A=(a_{ij})_{n\times n},B=(b_{ij})_{n\times n}=Q^{\top}(p,q,\theta)AQ(p,q,\theta)},\]假设$\textcolor{blue}{a_{pq}\neq0}$，证明：当$\textcolor{blue}{\theta}$满足$\textcolor{blue}{\cot2\theta= \dfrac{a_{qq}-a_{pp}}{2a_{pq}}}$时，有\[\textcolor{blue}{\sum_{i=1}^{n}b_{ii}^2=\sum_{i=1}^{n}a_{ii}^2+2a_{pq}^2.}\]\textbf{提示：}只需证$\textcolor{blue}{b_{pp}^2+b_{qq}^2=a_{pp}^2+a_{qq}^2+2a_{pq}^2}$。
+
+    \item (10pts)设$\textcolor{blue}{A=\dfrac{1}{25}\begin{bmatrix}7&7&24\\0&50&-25\\24&24&-7\end{bmatrix}}$，利用Householder矩阵，求$\textcolor{blue}{A}$的正交分解，即$\textcolor{blue}{A=QR}$，其中$\textcolor{blue}{Q}$、$\textcolor{blue}{R}$分别为Householder正交阵和上三角阵。
+
+\end{enumerate}
+
+    Deadline:2025.5.5
+
+\section{解答}
+
+\end{document}
