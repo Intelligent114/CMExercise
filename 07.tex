@@ -13,7 +13,6 @@
 \newcommand*{\diff}{\mathop{}\!\mathrm{d}}
 
 
-\everymath{\displaystyle}
 
 \begin{document}
 
@@ -39,6 +38,15 @@
 
 \section{解答}
 
+    $1.\,\,$系数矩阵的LU分解为$\begin{bmatrix}5&1&2\\1&3&-1\\2&2&5\end{bmatrix}=\begin{bmatrix}1&0&0\\\frac15&1&0\\\frac25&\frac47&1\end{bmatrix}\begin{bmatrix}5&1&2\\0&\frac{14}5&-\frac75\\0&0&5\end{bmatrix}$
 
+    $\quad$求解$Ly=b$，得到$y=\left(2,\dfrac{18}5,\dfrac{50}7\right)^{\top}$；求解$Lx=y$，得到$x=\left(-\dfrac47,2,\dfrac{10}7\right)^{\top}$。
 
+    $2.\,\,\begin{bmatrix}4&-1&0&0\\-1&4&-2&0\\0&-1&4&-2\\0&0&-1&4\end{bmatrix}=\begin{bmatrix}4&0&0&0\\-1&\frac{15}4&0&0\\0&-1&\frac{52}{15}&0\\0&0&-1&\frac{89}{26}\end{bmatrix}\begin{bmatrix}1&-\frac14&0&0\\0&1&-\frac8{15}&0\\0&0&1&-\frac{15}{26}\\0&0&0&1\end{bmatrix}$
+
+    $3.\,\,A=\dfrac1{100}\begin{bmatrix}3526&1496\\18730&7943\end{bmatrix},\|A\|_1=\dfrac{5564}{25},A^{-1}=\dfrac1{6531}\begin{bmatrix}-397150&74800\\936500&-176300\end{bmatrix},$
+
+    $\quad\|A^{-1}\|_1=\dfrac{444550}{2177}\Rightarrow \mathrm{cond}_1(A)=\|A\|_1\cdot\|A^{-1}\|_1=\dfrac{98939048}{2177}\approx 45447.43$。
+
+    $\quad$解的相对误差估计为$\dfrac{\|\delta x\|_1}{\|x\|_1}\lesssim\mathrm{cond}_1(A)\cdot\dfrac{\|\delta b\|_1}{\|b\|_1}\approx 22.7237$，即相对误差为$2272.37\%$。
 \end{document}
