@@ -52,4 +52,21 @@
 
 \section{解答}
 
+    $1.\,\,$迭代格式为$\begin{cases}x_1^{(k+1)}=\frac12(2+x_2^{(k)})\\x_2^{(k+1)}=\frac12(x_1^{(k)}+x_3^{(k)})\\x_3^{(k+1)}=\frac12(2+x_2^{(k)}+x_4^{(k)})\\x_4^{(k+1)}=\frac12(4+x_3^{(k)}\end{cases},G=D^{-1}(L+U)=\begin{bmatrix}0&\frac12&0&0\\\frac12&0 &\frac12&0 \\0&\frac12&0&\frac12\\0&0&\frac12& 0\end{bmatrix}$。
+
+    $\quad G$的特征值为$\dfrac{\pm 1\pm\sqrt{5}}{4},\rho(G)=\dfrac{1+\sqrt{5}}4<1$，故迭代收敛。
+
+    $2.\,\,$Gauss-Seidel迭代格式：$\begin{cases}x_1^{(k+1)}=\frac15(10+3x_2^{(k)}-2x_3^{(k)})\\x_2^{(k+1)}=\frac15(20+3x_1^{(k+1)}-2x_3^{(k)})\\x_1^{(k+1)}=\frac15(50-2x_1^{(k+1)}-2x_2^{(k+1)})\end{cases}$，
+
+    $\quad $SOR迭代格式：$\begin{cases}x_1^{(k+1)}=(1-\omega)x_1^{(k)}+\frac{\omega}5(10+3x_2^{(k)}-2x_3^{(k)})\\x_2^{(k+1)}=(1-\omega)x_2^{(k)}+\frac{\omega}5(20+3x_1^{(k+1)}-2x_3^{(k)})\\x_1^{(k+1)}=(1-\omega)x_3^{(k)}+\frac{\omega}5(50-x_1^{(k+1)}-2x_2^{(k+1)})\end{cases}$。
+
+    $\quad$分裂矩阵$Q=D+L=\begin{bmatrix}5&0&0\\-3&5&0\\2&2&5\end{bmatrix},G=-(D+L)^{-1}U=\dfrac1{125}\begin{bmatrix}0&75&-50\\0&45&-80\\ 0&-48&52\end{bmatrix}$。
+
+    $\quad$注意到系数矩阵各阶主子式为$\Delta_1=5,\Delta_2=\Delta_3=16$，是正定的，故迭代收敛。
+
+    $3.\,\,$迭代公式可以写为$x^{(k+1)}=(I-\alpha A)x^{(k)}+\alpha b$，故迭代矩阵为$I-\alpha A=\begin{bmatrix}1-3\alpha&-2\alpha\\-\alpha &1-2\alpha\end{bmatrix}$。
+
+    $\quad$特征值为$1-\alpha,1-4\alpha$，收敛条件为$|1-\alpha|<1,|1-4\alpha|<1$，即$0<\alpha<\dfrac12$。
+
+    $\quad$当$\alpha=\dfrac25$时，谱半径$\rho(G)=\max\{|1-\alpha|,|1-4\alpha|\}$最小，收敛速度最快。
 \end{document}

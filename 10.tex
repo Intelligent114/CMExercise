@@ -1,0 +1,96 @@
+\documentclass[cn,hazy,green,11pt,normal]{elegantnote}
+\title{计算方法作业\#9}
+
+\author{陈文轩}
+\institute{KFRC}
+
+\date{\today}
+
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{textcomp}
+
+
+\usepackage{tabularx}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+
+
+\begin{document}
+
+\maketitle
+
+\section{题目}
+
+
+    \begin{enumerate}
+
+    \item (6pts)在最小二乘法原理下求下列矛盾方程组：$\begin{cases}x_1-2x_2&=4\vspace{-0.1cm}\\x_1+6x_2&=14\vspace{-0.1cm}\\3x_1+x_2&=7.5\vspace{-0.1cm}\\x_1+x_2&=4.5\end{cases}$
+
+    \item (8pts)利用最小二乘法构造二次多项式 $y=p(x)$ 去拟合下列数据（这里$x$代表年份，$y$为人数），并计算 $y(2015)$，结果精确到小数点后一位。
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $x$ & 2010 & 2011 & 2012 & 2013 & 2014 \\
+                \hline
+                $y$ & 134091 & 134735 & 135404 & 136072 & 136782 \\
+                \hline
+            \end{tabular}
+            \label{tab:1}
+        \end{table}
+
+
+    \item (6pts)给出下列数据，用最小二乘法求形如$y=a\cos x+b\sin x$的经验公式。
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x_i$ & 0.20 & 0.25 & 0.30 & 0.50 \\
+                \hline
+                $y_i$ & 1.36 & 1.20 & 1.02 & 0.32 \\
+                \hline
+            \end{tabular}
+            \label{tab:2}
+        \end{table}
+
+
+    \item (12pts)利用最小二乘法构造一个二次多项式$p(x)$，去拟合下列人口数据（$x$代表年份，$p(x)$ 为人数，单位：亿），并分别预测一下\textcolor{magenta}{2024年末}和\textcolor{magenta}{2034年末}的人口数，计算结果精确到小数点后3位。
+
+    \begin{table}[H]
+        \centering
+        \small
+        \begin{tabular}{
+          |>{\centering\arraybackslash}p{0.75cm}
+          |>{\centering\arraybackslash}p{1.2cm}
+          |>{\centering\arraybackslash}p{1.1cm}
+          |>{\centering\arraybackslash}p{1.2cm}
+          |>{\centering\arraybackslash}p{1cm}
+          |>{\centering\arraybackslash}p{1cm}
+          |>{\centering\arraybackslash}p{1.1cm}
+          |>{\centering\arraybackslash}p{1.1cm}
+          |>{\centering\arraybackslash}p{1.3cm}
+          |}
+        \hline
+        \textbf{年份} & \textbf{年末人口} & \textbf{出生人口} & \textbf{死亡人口} & \textbf{出生率/\textperthousand} & \textbf{死亡率/\textperthousand} & \textbf{城镇人口} & \textbf{乡村人口} & \textbf{城镇化率/\textperthousand} \\
+        \hline
+        2018 & 14.0541 & 0.1523 & 0.0993 & 10.84 & 7.07 & 8.6433 & 5.4108 & 61.5 \\ \hline
+        2019 & 14.1008 & 0.1465 & 0.0998 & 10.39 & 7.08 & 8.8426 & 5.2582 & 62.7 \\ \hline
+        2020 & 14.1212 & 0.1202 & 0.09976 & 8.51 & 7.06 & 9.022 & 5.0992 & 63.9 \\ \hline
+        2021 & 14.1260 & 0.1062 & 0.1014 & 7.52 & 7.18 & 9.1425 & 4.9835 & 64.7 \\ \hline
+        2022 & 14.1175 & 0.0956 & 0.1041 & 6.77 & 7.37 & 9.2071 & 4.9104 & 65.22 \\ \hline
+        2023 & 14.0967 & 0.0902 & 0.1110 & 6.40 & 7.87 & 9.3267 & 4.7733 & 66.15 \\ \hline
+        \end{tabular}
+        \label{tab:3}
+    \end{table}
+\end{enumerate}
+
+    Deadline:2025.5.11
+
+\section{解答}
+
+\end{document}
