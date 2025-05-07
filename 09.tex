@@ -23,18 +23,44 @@
 
     \begin{enumerate}
 
-    \item (4pts)设$\textcolor{blue}{n}$阶实方阵$\textcolor{blue}{A}$有相异的特征根$\textcolor{blue}{|\lambda_1|>|\lambda_2|>\cdots>|\lambda_n|>0}$。对给定的实数$\textcolor{blue}{\alpha\neq\lambda_i}$ ($\textcolor{blue}{i=1,2,\cdots,n}$)，利用规范幂法或规范反幂法，设计一个能计算离$\textcolor{blue}{\alpha}$ \textcolor{red}{距离最近}的矩阵$\textcolor{blue}{A}$的特征根的迭代格式（注：不容许对矩阵求逆）。
+        \item (4pts)设$\textcolor{blue}{n}$阶实方阵$\textcolor{blue}{A}$有相异的特征根$\textcolor{blue}{|\lambda_1|>|\lambda_2|>\cdots>|\lambda_n|>0}$。对给定的实数$\textcolor{blue}{\alpha\neq\lambda_i}$ ($\textcolor{blue}{i=1,2,\cdots,n}$)，利用规范幂法或规范反幂法，设计一个能计算离$\textcolor{blue}{\alpha}$ \textcolor{red}{距离最近}的矩阵$\textcolor{blue}{A}$的特征根的迭代格式（注：不容许对矩阵求逆）。
 
-    \item (8pts)考虑用Jacobi方法计算矩阵$\textcolor{blue}{A=\begin{bmatrix}7&1&2\\1&4&0\\2&0&3\end{bmatrix}}$的特征值。求对$\textcolor{blue}{A}$作一次Givens相似变换时的Givens（旋转）变换矩阵$\textcolor{blue}{Q}$（要求相应的计算效率最高）以及Givens变换后的矩阵$\textcolor{blue}{B}$（其中，$\textcolor{blue}{B=Q^{\top} AQ}$）。
+        \item (8pts)考虑用Jacobi方法计算矩阵$\textcolor{blue}{A=\begin{bmatrix}7&1&2\\1&4&0\\2&0&3\end{bmatrix}}$的特征值。求对$\textcolor{blue}{A}$作一次Givens相似变换时的Givens（旋转）变换矩阵$\textcolor{blue}{Q}$（要求相应的计算效率最高）以及Givens变换后的矩阵$\textcolor{blue}{B}$（其中，$\textcolor{blue}{B=Q^{\top} AQ}$）。
 
-    \item (8pts)设$\textcolor{blue}{p<q}$，$\textcolor{blue}{Q(p,q,\theta)}$为$\textcolor{blue}{n}$阶\textcolor{red}{Givens}矩阵，$\textcolor{blue}{\theta}$为角度。记\[\textcolor{blue}{A=(a_{ij})_{n\times n},B=(b_{ij})_{n\times n}=Q^{\top}(p,q,\theta)AQ(p,q,\theta)},\]假设$\textcolor{blue}{a_{pq}\neq0}$，证明：当$\textcolor{blue}{\theta}$满足$\textcolor{blue}{\cot2\theta= \dfrac{a_{qq}-a_{pp}}{2a_{pq}}}$时，有\[\textcolor{blue}{\sum_{i=1}^{n}b_{ii}^2=\sum_{i=1}^{n}a_{ii}^2+2a_{pq}^2.}\]\textbf{提示：}只需证$\textcolor{blue}{b_{pp}^2+b_{qq}^2=a_{pp}^2+a_{qq}^2+2a_{pq}^2}$。
+        \item (8pts)设$\textcolor{blue}{p<q}$，$\textcolor{blue}{Q(p,q,\theta)}$为$\textcolor{blue}{n}$阶\textcolor{red}{Givens}矩阵，$\textcolor{blue}{\theta}$为角度。记\[\textcolor{blue}{A=(a_{ij})_{n\times n},B=(b_{ij})_{n\times n}=Q^{\top}(p,q,\theta)AQ(p,q,\theta)},\]假设$\textcolor{blue}{a_{pq}\neq0}$，证明：当$\textcolor{blue}{\theta}$满足$\textcolor{blue}{\cot2\theta= \dfrac{a_{qq}-a_{pp}}{2a_{pq}}}$时，有\[\textcolor{blue}{\sum_{i=1}^{n}b_{ii}^2=\sum_{i=1}^{n}a_{ii}^2+2a_{pq}^2.}\]\textbf{提示：}只需证$\textcolor{blue}{b_{pp}^2+b_{qq}^2=a_{pp}^2+a_{qq}^2+2a_{pq}^2}$。
 
-    \item (10pts)设$\textcolor{blue}{A=\dfrac{1}{25}\begin{bmatrix}7&7&24\\0&50&-25\\24&24&-7\end{bmatrix}}$，利用Householder矩阵，求$\textcolor{blue}{A}$的正交分解，即$\textcolor{blue}{A=QR}$，其中$\textcolor{blue}{Q}$、$\textcolor{blue}{R}$分别为Householder正交阵和上三角阵。
+        \item (10pts)设$\textcolor{blue}{A=\dfrac{1}{25}\begin{bmatrix}7&7&24\\0&50&-25\\24&24&-7\end{bmatrix}}$，利用Householder矩阵，求$\textcolor{blue}{A}$的正交分解，即$\textcolor{blue}{A=QR}$，其中$\textcolor{blue}{Q}$、$\textcolor{blue}{R}$分别为Householder正交阵和上三角阵。
 
-\end{enumerate}
+    \end{enumerate}
 
     Deadline:2025.5.5
 
 \section{解答}
+
+    $1.\,\,$初始化：选择初始向量$y_0,x_0=\dfrac{y_0}{\|y_0\|}$；
+
+    $\quad$迭代格式：解方程组$(A-\alpha I)y_{k+1}=x_k,\sigma_k=x^{\top}_k y_{k+1},\lambda_k=\alpha+\dfrac1{\sigma_k},x_{k+1}=\dfrac{y_{k+1}}{\|y_{k+1}\|}$；
+
+    $\quad$收敛判断：$\|x_{k+1}-x_k\|<\epsilon$时结束迭代。
+
+    $2.\,\,$选取模长最大的非对角元$a_{13}$与$a_{31}$，对应$\varphi=\dfrac12\arctan\dfrac{2a_{13}}{a_{11}-a_{33}}=\dfrac12\arctan1=\dfrac{\pi}{8}$，
+
+    $\quad$对应旋转矩阵$Q=\begin{bmatrix}\cos\varphi&0&\sin\varphi\\0&1&0\\-\sin\varphi&0&\cos\varphi\end{bmatrix}=\begin{bmatrix}\frac{\sqrt{2+\sqrt{2}}}{2} & 0 & \frac{\sqrt{2-\sqrt{2}}}{2} \\0 & 1 & 0 \\-\frac{\sqrt{2-\sqrt{2}}}{2} & 0 & \frac{\sqrt{2+\sqrt{2}}}{2}\end{bmatrix}$，
+
+    $\quad B=Q^{\top}AQ=\begin{bmatrix}5&\frac{\sqrt{2+\sqrt{2}}}{2}&0\\\frac{\sqrt{2+\sqrt{2}}}{2}&4&\frac{\sqrt{2-\sqrt{2}}}{2}\\0&\frac{\sqrt{2-\sqrt{2}}}{2}&5\end{bmatrix}$。
+
+    $3.\,\,$以下记$t=\tan\theta$，由$\dfrac{a_{qq}-a_{pp}}{2a_{pq}}=\cot2\theta=\dfrac1{\tan 2\theta}=\dfrac{1-t^2}{2t}$，有$a_{qq}-a_{pp}=\dfrac{1-t^2}{t}a_{pq}$。
+    \begin{flalign*}
+        \qquad\qquad b_{pp}^2+b_{qq}^2&=(a_{pp}-ta_{pq})^2+(a_{qq}+ta_{pq})^2=a_{pp}^2+a_{qq}^2+2t^2 a_{pq}^2-2ta_{pp}a_{pq}+2ta_{qq}a_{pq} &\\
+                                      &=a_{pp}^2+a_{qq}^2+2t^2 a_{pq}^2+2ta_{pq}(a_{qq}-a_{pp})&\\
+                                      &=a_{pp}^2+a_{qq}^2+2t^2 a_{pq}^2+2ta_{pq}\cdot\dfrac{1-t^2}{t}a_{pq} =a_{pp}^2+a_{qq}^2+2a_{pq}^2&
+    \end{flalign*}
+    $\qquad\quad$由于其他对角线元素不变，故$\sum\limits_{i=1}^{n}b_{ii}^2=\sum\limits_{i=1}^{n}a_{ii}^2+2a_{pq}^2$。
+
+    $4.\,\,$取$x=\dfrac1{25}(7,0,24)^{\top},\|x\|=1,v=x-\|x\|e_1=\dfrac1{25}(-18,0,24)^{\top},\|v\|=\dfrac65$，
+
+    $\quad H_1=I-2\dfrac{vv^{\top}}{v^{\top}v}=\dfrac1{25}\begin{bmatrix}7&0&24\\0&25&0\\24&0&-7\end{bmatrix},H_1 A=\begin{bmatrix}1&1&0\\0&2&-1\\0&0&1\end{bmatrix}$已经是上三角矩阵。
+
+    $\quad$因此$QR$分解是$Q=H_1=\dfrac1{25}\begin{bmatrix}7&0&24\\0&25&0\\24&0&-7\end{bmatrix},R=\begin{bmatrix}1&1&0\\0&2&-1\\0&0&1\end{bmatrix}$。
 
 \end{document}
