@@ -1,0 +1,55 @@
+\documentclass[cn,hazy,green,11pt,normal]{elegantnote}
+\title{计算方法作业\#10}
+
+\author{陈文轩}
+\institute{KFRC}
+
+\date{\today}
+
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{textcomp}
+
+
+\everymath{\displaystyle}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+
+
+\begin{document}
+
+\maketitle
+
+\section{题目}
+
+
+\begin{enumerate}
+
+    \item (5pts)试利用Gram-Schmidt正交化算法，求$[0,1]$上的三次多项式关于内积\[\int_0^1\sqrt{x}f(x)g(x)\diff x\]的一组正交基。
+
+    \item (5pts)对下列数据用最小二乘法求形如$\varphi(x)=\frac{x}{a+bx}$的拟合函数。
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x_i$ & 2.10 & 2.50 & 2.80 & 3.20 \\
+                \hline
+                $y_i$ & 0.6087 & 0.6849 & 0.7368 & 0.8111 \\
+                \hline
+            \end{tabular}
+            \label{tab:1}
+        \end{table}
+
+    \item (5pts)试确定常数$c_0,c_1\in\mathbb{R}$使得$\int_0^1| e^x-c_0-c_1 x|^2\diff x$达到极小，并求出极小值。
+
+    \item (5pts)求函数$f(x)=\cos x$在区间上关于权函数$\rho(x)=\sqrt{x}$的三次最佳平方逼近多项式。
+\end{enumerate}
+
+    Deadline:2025.5.18
+
+\section{解答}
+
+\end{document}
