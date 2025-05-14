@@ -1,0 +1,53 @@
+\documentclass[cn,hazy,green,11pt,normal]{elegantnote}
+\title{计算方法作业\#12}
+
+\author{陈文轩}
+\institute{KFRC}
+
+\date{\today}
+
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{textcomp}
+
+
+\everymath{\displaystyle}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+\lstset{
+  basicstyle=\ttfamily\small,
+  numbers=left,
+  xleftmargin=4em,
+  frame=single,
+}
+
+\begin{document}
+
+\maketitle
+
+\section{题目}
+
+
+\begin{enumerate}
+
+    \item (5pts)设$f(x)=x^2$，求$f(x)$在区间$[-\pi,\pi]$上的二次最佳平方逼近三角多项式.
+
+    \item (10pts)设$f(x)\in C^2[a,b]$，且$f''(x)>0$。设$f(x)$在$[a,b]$上的一次最佳一致逼近多项式为$p_1^*(x)=c_0+c_1 x$。
+        \begin{enumerate}
+            \item 证明：$\exists c\in[a,b],\text{s.t.\,\,} c_1=f'(c)=\dfrac{f(b)-f(a)}{b-a},c_0=\dfrac{f(a)+f(c)}{2}-\dfrac{f(b)-f(a)}{b-a}\cdot\dfrac{a+c}{2}$；
+            \item 求$f(x)=\cos x$在$\left[0,\dfrac{\pi}{2}\right]$上的一次最佳一致逼近多项式。
+        \end{enumerate}
+
+    \item (5pts)求多项式$p(x)=6x^3+3x^2+x+4$在$[-1,1]$上的二次最佳一致逼近多项式。
+
+    \item (5pts)求函数$f(x)=\cos \dfrac{\pi}{2}x$在$[-1,1]$上关于权函数$\rho(x)=(1-x^2)^{-1/2}$的三次最佳平方逼近多项式。
+\end{enumerate}
+
+    Deadline:2025.5.25
+
+\section{解答}
+
+
+\end{document}
