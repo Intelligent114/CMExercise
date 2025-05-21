@@ -1,0 +1,81 @@
+\documentclass[cn,hazy,green,11pt,normal]{elegantnote}
+\title{计算方法作业\#13}
+
+\author{陈文轩}
+\institute{KFRC}
+
+\date{\today}
+
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{mathtools}
+\usepackage{textcomp}
+
+
+\everymath{\displaystyle}
+\DeclareMathOperator*{\st}{s.t.\,\,}
+
+\newcommand*{\diff}{\mathop{}\!\mathrm{d}}
+
+
+\begin{document}
+
+\maketitle
+
+\section{题目}
+
+    \begin{enumerate}
+        \item (6pts)用图解法求解下列线性规划问题，并指出问题是否有唯一最优解、无穷多最优解、无界解还是无可行解？
+            \begin{flalign*}
+                \max \quad&z=2x_1+3x_2 \\
+                \st \quad&x_1+2x_2\leq 8 \\
+                &2x_1+x_2\geq 1 \\
+                &x_2\leq 3 \\
+                &x_1,x_2\geq 0
+            \end{flalign*}
+
+        \item (6pts)将下列线性规划问题化为标准形式，并列出初始单纯形表.
+            \begin{flalign*}
+                \min \quad&z=-x_1+2x_2-3x_3+2x_4 \\
+                \st \quad& 4x_1-x_2+2x_3-x_4=-2 \\
+                &x_1+x_2-x_3+2x_4\leq 14 \\
+                &-2x_1+3x_2+x_3-x_4\geq 2 \\
+                & x_1,x_2,x_3\geq 0, x_4\,\text{无约束}
+            \end{flalign*}
+
+        \item (6pts)求下列线性规划问题中满足约束条件的所有基解，并指出哪些是基可行解，并代入目标函数，确定哪一个是最优解。
+            \begin{flalign*}
+                \max \quad& z=2x_1-x_2+3x_3+2x_4 \\
+                \st \quad& 2x_1+3x_2-x_3-4x_4 = 8 \\
+                &x_1-2x_2+6x_3-7x_4 = -3 \\
+                &x_1,x_2,x_3,x_4\geq 0
+            \end{flalign*}
+
+        \item (6pts)用单纯形方法求解以下线性规划问题：
+            \begin{flalign*}
+                \max \quad& z=3x_1-2x_2+5x_3 \\
+                \st \quad &3x_1+2x_3\leq 13 \\
+                & x_2+3x_3\leq 17 \\
+                &2x_1+x_2+x_3\leq 13 \\
+                &x_1,x_2,x_3\geq0
+            \end{flalign*}
+
+        \item (6pts)用大M法求解下列线性规划问题：
+            \begin{flalign*}
+                \min \quad& z=3x_1-x_2 \\
+                \st \quad& 3x_1+x_2\geq 3 \\
+                &2x_1-3x_2\geq 1\\
+                &x_1,x_2\geq 0
+            \end{flalign*}
+
+        \item (6pts)分别用最速下降法与牛顿法求函数$f(x)=x_1^2-x_1 x_2
+        +x_2^2+x_1 x_3+x_3^2-2x_1+4x_2+2x_3-2, x=(x_1,x_2,x_3)^{\top}\in\mathbb{R}^3$的极小点, 初始点$x_0=(0,0,0)^{\top}$，要求：
+            \begin{enumerate}
+                \item 最速下降法进行$2$次迭代, 并验证相邻两步的搜索方向正交；
+                \item 牛顿法进行1次迭代。
+            \end{enumerate}
+    \end{enumerate}
+
+    Deadline:2025.6.22
+
+\end{document}
