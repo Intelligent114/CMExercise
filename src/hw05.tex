@@ -1,0 +1,121 @@
+\chapter{第五次作业}
+
+    \begin{homework}[12pts]
+        设有常微分方程初值问题$\begin{cases}y'(x)=-y(x),0\leq x\leq 1\\y(0)=1\end{cases}$，假设求解区间$[0,1]$被$n$等分，令$h=\frac1n,x_k=\frac kn(k=0,1,\cdots,n)$
+        \begin{enumerate}
+            \item 分别写出用\textcolor{red}{向前Euler公式，向后Euler公式，梯形公式以及改进的Euler公式}求上述微分方程数值解时的差分格式（即\textcolor{blue}{$y_{k+1}$与$y_k$}二者之间的递推关系式）；
+            \item 设\textcolor{blue}{$y_0=y(0)$}，分别求这四种公式（方法）下的近似值\textcolor{blue}{$y_n$}的表达式（注：这里的\textcolor{blue}{$y_n$}即是\textcolor{blue}{$y(x_n)\equiv y(1)$的近似值}；
+            \item 当\textcolor{blue}{$n$}足够大（即区间长度\textcolor{blue}{$h\rightarrow 0$}时，分别判断四种方法下的近似值\textcolor{blue}{$y_n$}是否收敛到原问题的真解\textcolor{blue}{$y(x)$}在\textcolor{blue}{$x=1$}处的值。
+        \end{enumerate}
+    \end{homework}
+
+    \begin{solution}
+        显然解析解是$y=e^{-x}$，对应$y(1)=e^{-1}$。以下$n=\dfrac1k$。
+        \begin{itemize}
+            \item 向前Euler公式：$y_{k+1}=y_k+h(-y_k)=(1-h)y_k,y_n=(1-h)^n,\lim\limits_{n\rightarrow \infty}y_n=e^{-1}=y(1)$；
+            \item 向后Euler公式：$y_{k+1}=y_k-hy_{k+1}=\dfrac{y_k}{1+h},y_n=\left(\dfrac1{1+h}\right)^n,\lim\limits_{n\rightarrow \infty}y_n=e^{-1}=y(1)$；
+            \item 梯形公式：$y_{k+1}=y_k+\dfrac h2(-y_k-y_{k+1})=\dfrac{2-h}{2+h}y_k,y_n=\left(\dfrac{2-h}{2+h}\right)^n\lim\limits_{n\rightarrow \infty}y_n=e^{-1}=y(1)$；
+            \item 改进的Euler公式：预测：$y^*=y_k+h(-y_k)=(1-h)y_k$，
+
+                校正：$y_{k+1}=y_k+\dfrac h2(-y_k-y^*)=\left(1-h+\dfrac {h^2} 2\right)y_k,y_n=\left(1-h+\dfrac {h^2} 2\right)^n$，此时$\lim\limits_{n\rightarrow \infty}y_n=e^{-1}=y(1)$。
+        \end{itemize}
+
+
+    \end{solution}
+
+    \begin{homework}[8pts]
+        试推导$p=1,q=2$显式公式\textcolor{blue}{$y_{n+1}=y_{n-1}+\dfrac h3\left(7f(x_n,y_n)-2f(x_{n-1},y_{n-1})+f(x_{n-2}\right.$}
+
+        \textcolor{blue}{$\left.,y_{n-2})\right)$}的\textcolor{red}{局部截断误差}，即验证\textcolor{blue}{$T_{n+1}\equiv y(x_{n+1})-y_{n+1}=\,\,$}\textcolor{magenta}{$\dfrac13 h^4 y^{(4)}(x_{n-1})+O(h^5)$}
+
+        （提示：\textcolor{magenta}{将差分格式右端点某些项在某点处同时作Taylor展开}）；
+    \end{homework}
+
+    \begin{solution}
+        $y(x_{n+1})=y(x_{n-1})+2hy'(x_{n-1})+2h^{2}y''(x_{n-1})+\dfrac43 h^{3}y'''(x_{n-1})+\dfrac23 h^4 y''''(x_{n-1})+O(h^5)$；
+
+        $f(x_n,y_n)=y'(x_n)=y'(x_{n-1})+hy''(x_{n-1})+\dfrac12 h^2 y'''(x_{n-1})+\dfrac16 h^3 y''''(x_{n-1})+O(h^4)$
+
+        $f(x_n,y_{n-2})=y'(x_{n-2})=y'(x_{n-1})-hy''(x_{n-1})+\dfrac12 h^2 y'''(x_{n-1})-\dfrac16 h^3 y''''(x_{n-1})+O(h^4)$
+
+        \begin{flalign*}
+            \qquad\quad&y(x_{n+1})-y_{n+1}=y(x_{n+1})-\dfrac h3\left(7f(x_n,y_n)-2f(x_{n-1},y_{n-1})+f(x_{n-2})\right) &\\
+            =&y(x_{n-1})+2hy'(x_{n-1})+2h^{2}y''(x_{n-1})+\dfrac43 h^{3}y'''(x_{n-1})+\dfrac23 h^4 y''''(x_{n-1})+O(h^5)-\dfrac h3 &\\
+             &\left(7\left(y'(x_{n-1})+hy''(x_{n-1})+\dfrac12 h^2 y'''(x_{n-1})+\dfrac16 h^3 y''''(x_{n-1})+O(h^4)\right)-2y'(x_{n-1})\right.&\\
+             &+\left.\left(y'(x_{n-1})-hy''(x_{n-1})+\dfrac12 h^2 y'''(x_{n-1})-\dfrac16 h^3 y''''(x_{n-1})+O(h^4)\right) \right) &\\
+            =&\dfrac13 h^4 y^{(4)}(x_{n-1})+O(h^5)
+        \end{flalign*}\vspace{-0.8cm}
+
+        故$T_{n+1}=\dfrac13 h^4 y^{(4)}(x_{n-1})+O(h^5)$。
+    \end{solution}
+
+    \begin{homework}[18pts]
+        试用线性多步法构造\textcolor{blue}{$p=1,q=2$}时的隐式差分格式，求该格式局部截断误差的\textcolor{red}{误差主项}并判断它的阶，最后为该隐式格式设计一种合适的预估-校正格式。
+    \end{homework}
+
+    \begin{solution}
+        差分格式为$y_{n+1}=y_{n-1}+\beta_{-1}f(x_{n+1},y_{n+1})+\beta_0 f(x_n,y_n)+\beta_{1} f(x_{n-1},y_{n-1})$；
+
+        记$x=x_{n-1}+\xi,\xi\in[0,2h]$，则对应节点为$\xi=0,h,2h$，Lagrange基函数为：
+
+        $l_0(\xi)=\dfrac{(\xi-h)(\xi-2h)}{2h^2},l_1(\xi)=-\dfrac{\xi(\xi-2h)}{h^2},l_2(\xi)=\dfrac{\xi(\xi-h)}{2h^2}$。对应权重如下：
+
+        $\beta_1=\int_0^{2h} l_0(\xi)\diff\xi=\dfrac h3,\beta_0=\int_0^{2h} l_1(\xi)\diff\xi=\dfrac {4h}3,\beta_1=\int_0^{2h} l_2(\xi)\diff\xi=\dfrac h3,$
+
+        故差分格式为$y_{n+1}=y_{n-1}+\dfrac h3\left(f(x_{n+1},y_{n+1})+4f(x_n,y_n)+f(x_{n-1},y_{n-1})\right)$。
+
+        以下记$x_{n-1}=r,x_n=s,x_{n+1}=t$，则$s=r+h,t=r+2h$，Taylor展开为：
+
+        $y(t)=y(r)+2hy'(r)+2h^2 y''(r)+\dfrac43 h^3 y'''(r)+\dfrac 42 h^4 y^{(4)}(r)+\dfrac 4{15}h^5 y^{(5)}(r)+O(h^6)$
+
+        $y'(t)=y'(r)+2hy''(r)+2h^2 y'''(r)+\dfrac43 h^3 y^{(4)}(r)+\dfrac 42 h^4 y^{(5)}(r)+O(h^5)$
+
+        $y'(s)=y'(r)+hy''(r)+\dfrac12 h^2 y'''(r)+\dfrac16 h^3 y^{(4)}(r)+\dfrac1{24} h^4 y^{(5)}(r)+O(h^5)$
+        \begin{flalign*}
+            \qquad\quad &\tau_{n+1}=y(x_{n+1})-y_{n+1}=y(t)-y(r)-\dfrac h3(y'(r)+4y'(s)+y'(t)) &\\
+            =&y(r)+2hy'(r)+2h^2 y''(r)+\dfrac43 h^3 y'''(r)+\dfrac 42 h^4 y^{(4)}(r)+\dfrac 4{15}y^{(5)}(r)+O(h^6)-y(r)&\\
+            &-\dfrac h3\left(y'(r)+4\left(y'(r)+hy''(r)+\dfrac12 h^2 y'''(r)+\dfrac16 h^3 y^{(4)}(r)+\dfrac1{24} h^4 y^{(5)}(r)+O(h^5)\right)\right.&\\
+            &\left.+\left(y'(r)+2hy''(r)+2h^2 y'''(r)+\dfrac43 h^3 y^{(4)}(r)+\dfrac 42 h^4 y^{(5)}(r)+O(h^5)\right)\right)&\\
+            =&-\dfrac1{90}h^5 y^{(5)}(r)+O(h^6)
+        \end{flalign*}\vspace{-0.8cm}
+
+        因此方法的误差主项为$-\dfrac1{90}h^5 y^{(5)}(r)$，阶数为$4$。
+
+        一种预估-校正方法如下：使用显式公式作为预估：
+
+        $y_{n+1}^{(p)}=y_{n-1}+\dfrac h3\left(7f(x_n,y_n)-2f(x_{n-1},y_{n-1})+f(x_{n-2},y_{n-2}\right)$，
+
+        用预估值替代隐式公式中的未知量：
+
+        $y_{n+1}=y_{n-1}+\dfrac h3\left(f(x_{n+1},y_{n+1}^{(p)})+4f(x_n,y_n)+f(x_{n-1},y_{n-1})\right)$。
+
+    \end{solution}
+
+    \begin{homework}[12pts]
+        试推导如下Runge-Kutta公式的局部截断误差及其误差主项，判断该公式/格式的（精度）阶数。提示：\textcolor{magenta}{利用二元函数的Taylor展开。}
+        \textcolor{blue}{\[\begin{cases}y_{n+1}=y_n+\dfrac h4(3k_1+k_2)\\k_1=f(x_n,y_n)\\k_2=f(x_n+2h,y_n+2hk_1)\end{cases}\]}
+    \end{homework}
+
+    \begin{solution}
+        记$x=x_n,y=y_n,f=f(x,y),f_x=\dfrac{\partial f}{\partial x}(x,y),f_y=\dfrac{\partial f}{\partial y}(x,y)$，高阶偏导均在$(x,y)$取值。
+        \begin{flalign*}
+            \qquad\quad &k_2=f(x+2h,y+2hk_1)=f(x+2h,y+2hf)&\\
+            =&f+2hf_x+2hff_y+\dfrac12(f_{xx}(2h)^2+2f_{xy}(2h)(2hf)+f_{yy}(2hf)^2)+O(h^3)&\\
+            =&f+2hf_x+2hff_y+2h^2 f_{xx}+4h^2 f_{xy}f+2h^2 f_{yy}f+O(h^3)
+        \end{flalign*}\vspace{-1cm}
+        \begin{flalign*}
+            \qquad\quad &y_{n+1}=y(x)+\dfrac h4(3f+f(x+2h,y+2hk_1))&\\
+            =&y(x)+\dfrac h4(3f+2hf_x+2hff_y+2h^2 f_{xx}+4h^2 f_{xy}f+2h^2 f_{yy}f+O(h^3))&\\
+            =&y(x)+hf+\dfrac{h^2}2(f_x+f_y f)+\dfrac{h^3}2(f_{xx}+2f_{xy}f+f_{yy}f^2)+O(h^4)
+        \end{flalign*}\vspace{-0.8cm}
+
+        $y'(x)=f(x,y(x))\Rightarrow y''(x)=f_x+f_y y'=f_x+f_{y}f,y'''=f_{xx}+2f_{xy}f+f_{yy}f^2+f_y f_x+f_y^2 f$；
+        \begin{flalign*}
+            \qquad\quad &y(x+h)=y(x)+hy'(x)+\dfrac12 h^{2}y''(x)+\dfrac16 h^3 y'''(x)&\\
+            =&y(x)+hf+\dfrac{h^2}2(f_x+ff_y)+\dfrac{h^3}6(f_{xx}+2f_{xy}f+f_{yy}f^2+f_y f_x+f_y^2 f)
+        \end{flalign*}\vspace{-0.8cm}
+
+        此时$\tau=y(x+h)-y_{n+1}=\dfrac{h^3}6(f_x f_y+f_y^2 f-2f_{xx}-4f_{xy}f-2f_{yy}f^2)+O(h^4)$
+
+        故误差主项是$\dfrac{h^3}6(f_x f_y+f_y^2 f-2f_{xx}-4f_{xy}f-2f_{yy}f^2)$，阶数为$2$。
+    \end{solution}

@@ -1,0 +1,95 @@
+\chapter{第十次作业}
+
+    \begin{homework}[6pts]
+        在最小二乘法原理下求下列矛盾方程组：$\begin{cases}x_1-2x_2&=4\vspace{-0.1cm}\\x_1+6x_2&=14\vspace{-0.1cm}\\3x_1+x_2&=7.5\vspace{-0.1cm}\\x_1+x_2&=4.5\end{cases}$
+    \end{homework}
+
+    \begin{solution}
+        转化为矩阵形式$A=\begin{bmatrix}1&-2\\1&6\\3&1\\1&1\end{bmatrix},b=\begin{bmatrix}4\\14\\7.5\\4.5\end{bmatrix},x=(A^{\top}A)^{-1}A^{\top}b=\left(\dfrac{593}{220},\dfrac{87}{55}\right)^{\top}$
+    \end{solution}
+
+    \begin{homework}[8pts]
+        利用最小二乘法构造二次多项式 $y=p(x)$ 去拟合下列数据（这里$x$代表年份，$y$为人数），并计算 $y(2015)$，结果精确到小数点后一位。
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|c|}
+                \hline
+                $x$ & 2010 & 2011 & 2012 & 2013 & 2014 \\
+                \hline
+                $y$ & 134091 & 134735 & 135404 & 136072 & 136782 \\
+                \hline
+            \end{tabular}
+            \label{tab:1}
+        \end{table}
+    \end{homework}
+
+    \begin{solution}
+        令$t=x-2010$，则矩阵形式为$A=\begin{bmatrix}0&0&1\\1&1&1\\4&2&1\\9&3&1\\16&4&1\end{bmatrix},b=\begin{bmatrix}134091\\134735\\135404\\136072\\136782\end{bmatrix}$。
+
+        解为$(A^{\top}A)^{-1}A^{\top}b\approx(9.3571,634.4714,134091.71)^{\top}$，对应$x=t+2010$，有
+
+        $p(x)=9.3571(x-2010)^2+634.4714(x-2010)+134091.71,p(2015)\approx137498.0$。
+    \end{solution}
+
+    \begin{homework}[6pts]
+        给出下列数据，用最小二乘法求形如$y=a\cos x+b\sin x$的经验公式。
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x_i$ & 0.20 & 0.25 & 0.30 & 0.50 \\
+                \hline
+                $y_i$ & 1.36 & 1.20 & 1.02 & 0.32 \\
+                \hline
+            \end{tabular}
+            \label{tab:2}
+        \end{table}
+    \end{homework}
+
+    \begin{solution}
+        $A=\begin{bmatrix}\cos0.2&\sin0.2\\\cos0.25&\sin0.25\\\cos0.3&\sin0.3\\\cos0.5&\sin0.5\end{bmatrix} \approx\begin{bmatrix}0.9801&0.1987\\0.9689&0.2474\\0.9553&0.2955\\0.8776&0.4794\end{bmatrix},y= \begin{bmatrix}1.36\\1.20\\1.02\\0.32\end{bmatrix},\begin{bmatrix}a\\b\end{bmatrix}\approx\begin{bmatrix}2.00\\-3.00\end{bmatrix}$
+    \end{solution}
+
+    \begin{homework}[12pts]
+        利用最小二乘法构造一个二次多项式$p(x)$，去拟合下列人口数据（$x$代表年份，$p(x)$ 为人数，单位：亿），并分别预测一下\textcolor{magenta}{2024年末}和\textcolor{magenta}{2034年末}的人口数，计算结果精确到小数点后3位。
+
+        \begin{table}[H]
+            \centering
+            \small
+            \begin{tabular}{
+              |>{\centering\arraybackslash}p{0.75cm}
+              |>{\centering\arraybackslash}p{1.2cm}
+              |>{\centering\arraybackslash}p{1.1cm}
+              |>{\centering\arraybackslash}p{1.2cm}
+              |>{\centering\arraybackslash}p{1cm}
+              |>{\centering\arraybackslash}p{1cm}
+              |>{\centering\arraybackslash}p{1.1cm}
+              |>{\centering\arraybackslash}p{1.1cm}
+              |>{\centering\arraybackslash}p{1.3cm}
+              |}
+            \hline
+            \textbf{年份} & \textbf{年末人口} & \textbf{出生人口} & \textbf{死亡人口} & \textbf{出生率/\textperthousand} & \textbf{死亡率/\textperthousand} & \textbf{城镇人口} & \textbf{乡村人口} & \textbf{城镇化率/\textperthousand} \\
+            \hline
+            2018 & 14.0541 & 0.1523 & 0.0993 & 10.84 & 7.07 & 8.6433 & 5.4108 & 61.5 \\ \hline
+            2019 & 14.1008 & 0.1465 & 0.0998 & 10.39 & 7.08 & 8.8426 & 5.2582 & 62.7 \\ \hline
+            2020 & 14.1212 & 0.1202 & 0.09976 & 8.51 & 7.06 & 9.022 & 5.0992 & 63.9 \\ \hline
+            2021 & 14.1260 & 0.1062 & 0.1014 & 7.52 & 7.18 & 9.1425 & 4.9835 & 64.7 \\ \hline
+            2022 & 14.1175 & 0.0956 & 0.1041 & 6.77 & 7.37 & 9.2071 & 4.9104 & 65.22 \\ \hline
+            2023 & 14.0967 & 0.0902 & 0.1110 & 6.40 & 7.87 & 9.3267 & 4.7733 & 66.15 \\ \hline
+            \end{tabular}
+            \label{tab:3}
+        \end{table}
+    \end{homework}
+
+    \begin{solution}
+        令$t=x-2018$，则矩阵形式为$A=\begin{bmatrix}0&0&1\\1&1&1\\4&2&1\\9&3&1\\16&4&1\\25&5&1\end{bmatrix},b=\begin{bmatrix}14.0541\\14.1008\\14.1212\\14.1260\\14.1175\\14.0967\end{bmatrix}$。
+
+        解为$(A^{\top}A)^{-1}A^{\top}b\approx(-0.00809,0.0534,14.058)^{\top}$，对应$x=t+2018$，有
+
+        $p(x)=-0.00809(x-2018)^2+0.0534(x-2018)+14.058$
+
+        $p(2024)\approx14.087,p(2034)\approx12.841$。
+    \end{solution}
+

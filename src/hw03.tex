@@ -1,0 +1,69 @@
+\chapter{第三次作业}
+
+    \begin{homework}[6pts]
+        构造积分$\bar{I}(f)=\int_{-h}^{2h}f(x)\diff x$的数值积分公式$I(f)=a_{-1}f(-h)+a_0 f(0)+a_1 f(2h)$，$h>0$；
+    \end{homework}
+
+    \begin{solution}
+        积分对$p_0(x)=1,p_1(x)=x,p_2(x)=x^2$无误差，对应方程组$\begin{cases}a_{-1}+a_0+a_1=3h\\-2a_{-1}+4a_1=3h\\a_{-1}+4a_1=3h\end{cases}$
+
+        $\Rightarrow a_{-1}=0,a_0=2.25h,a_1=0.75h,I(f)=\dfrac94 hf(0)+\dfrac34 hf(2h).$
+    \end{solution}
+
+    \begin{homework}[6pts]
+        分别利用梯形公式和Simpson公式求如下积分及其误差(计算结果至少保留小数点后4位)：$\int_0^2 e^{-x}\sin x\diff x$
+    \end{homework}
+
+    \begin{solution}
+        准确值：$\int_0^2 e^{-x}\sin x\diff x=-\dfrac12 e^{-x}(\sin x+\cos x)\Big|_0^2\approx 0.46663$；
+
+        $ f(0)=0,f(1)\approx0.30956,f(2)\approx0.12306$；
+
+        Simpson公式:$I_1=\dfrac{b-a}6\left(f(a)+4f\left(\dfrac{a+b}2\right)+f(b)\right)\approx0.4538$，误差约为$0.0128$；
+
+        梯形公式：$I_2=\dfrac{b-a}{2}(f(a)+f(b))\approx0.12306$，误差约为$0.3436$。
+    \end{solution}
+
+    \begin{homework}[10pts]
+        记$I(f)=\int_{-2}^2 f(x)\diff x$，设$S(f(x))$为其数值积分公式，其中$I(f)\approx S(f(x))=Af(-\alpha)+Bf(0)+Cf(\alpha)$.
+        \begin{enumerate}
+            \item 试确定参数$A,B,C,\alpha$使得该数值积分公式具有尽可能高的代数精度，并确定该公式的代数精度(需给出求解过程)；
+            \item 设$f(x)$足够光滑(可微)，求该数值积分公式的误差
+        \end{enumerate}
+    \end{homework}
+
+    \begin{solution}
+        取$A=C$，积分对$x^{2k+1}$无误差。积分对$p_0(x)=1,p_2(x)=x^2,p_4(x)=x^4$无误差，
+
+        对应方程组$\begin{cases}2A+B=4\\A\alpha^2=\dfrac83\\A\alpha^4=\dfrac{32}5\end{cases}\Longrightarrow\begin{cases}A=C=\dfrac{10}9\\B=\dfrac{16}9\\\alpha=\dfrac25\sqrt{15}\end{cases}$，代数精度为$5$次。
+
+        误差为$E(f)=\dfrac{E(x^6)}{6!}f^{(6)}(\xi)=\left(\int_{-2}^2 x^6\diff x-S(x^6)\right)\dfrac{f^{(6)}(\xi)}{216}=\dfrac{64}{7875} f^{(6)}(\xi),\xi\in[-2,2]$
+    \end{solution}
+
+    \begin{homework}[8pts]
+        求满足下表数据以及边界条件$S''(-2)=S''(2)=0(n=3)$的三次样条插值函数$S(x)$，并计算$S(0)$的值。注意：$n$为小区间个数。
+        \begin{table}[H]
+            \begin{center}
+                \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x$ & $-2.00$ & $-1.00$ & $1.00$ & $2.00$ \\
+                \hline
+                $f(x)$ & $-4.00$ & $2.00$ & $2.50$ & $1.50$ \\
+                \hline
+                \end{tabular}
+            \end{center}
+        \end{table}
+    \end{homework}
+
+    \begin{solution}
+        $S_i(x)=a_i+b_i(x-x_i)+c_i(x-x_i)^2+d_i(x-x_i)^3,i=0,1,2$满足$S(x_i)=f(x_i),i=0,1,2,3$
+
+        记$M_i=S''(x_i)$，则$\dfrac{h_{i-1}}{6}M_{i-1}+\dfrac{h_{i-1}+h_i}{3}M_i+\dfrac{h_i}{6}M_{i+1}=\dfrac{f[x_i,x_{i+1}]-f[x_{i-1},x_i]}{h_i},i=1,2$
+
+        $ M_i=0,i=0,3$，其中$h_i=x_{i+1}-x_i$。现在有$12$个方程与$12$个未知数，解方程组得到：
+
+        $ S(x)=\begin{cases}-4+6.25(x+2)^2-0.25(x+2)^3,&x\in[-2,-1]\\2+1.75(x+1)-0.75(x+1)^2+0.09375(x+1)^3,&x\in[-1,1]\\2.5-0.9375(x-1)-0.1875(x-1)^2+0.0625(x-1)^3,&x\in[1,2]\end{cases}$
+
+        故$S(0)=3.5625=\dfrac{57}{16}$
+
+    \end{solution}

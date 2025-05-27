@@ -1,0 +1,88 @@
+\chapter{第二次作业}
+
+    \begin{homework}[6pts]
+        (利用下面的函数值表，作差商表，写出相应的牛顿插值多项式以及插值误差表达式，并计算$f(1.5)$和$f(4)$的近似值:
+            \begin{table}[H]
+                \begin{center}
+                    \begin{tabular}{|c|c|c|c|c|}
+                    \hline
+                    $x$ & $1.0$ & $2.0$ & $3.0$ & $4.5$ \\
+                    \hline
+                    $f(x)$ & $2.5$ & $4.0$ & $3.5$ & $2.0$ \\
+                    \hline
+                    \end{tabular}
+                \end{center}
+            \end{table}
+    \end{homework}
+
+    \begin{solution}
+        先计算各阶差商：$f[x_0]=2.5,f[x_1]=4,f[x_2]=3.5,f[x_3]=2;$
+        
+        $f[x_0,x_1]=\frac{f[x_1]-f[x_0]}{x_1-x_0}=1.5,f[x_1,x_2]=\frac{f[x_2]-f[x_1]}{x_2-x_1}=-0.5,f[x_2,x_3]=\frac{f[x_3]-f[x_2]}{x_3-x_2}=-1;$
+
+        $f[x_0,x_1,x_2]=\dfrac{f[x_1,x_2]-f[x_0,x_1]}{x_2-x_0}=-1,f[x_1,x_2,x_3]=\dfrac{f[x_2,x_3]-f[x_1,x_2]}{x_3-x_1}=-0.2;$
+
+        $f[x_0,x_1,x_2,x_3]=\dfrac{f[x_0,x_1,x_2]-f[x_1,x_2,x_3]}{x_3-x_0}=\dfrac{8}{35}.$
+
+        因此，插值多项式$P_3(x)=2.5+1.5(x-1)-(x-1)(x-2)+\dfrac{8}{35}(x-1)(x-2)(x-3),$
+
+        完全展开可以得到$P_3(x)=\dfrac{8}{35}x^3-\dfrac{83}{35}x^2+\dfrac{491}{70}x-\dfrac{83}{35}.$
+
+        误差项$R_3(x)=\dfrac{f^{(4)}(\xi)}{24}(x-1)(x-2)(x-3)(x-4.5),\xi\in[1,4.5].$
+
+        $P_3(1.5)=\dfrac{251}{70},P_3(4)=\dfrac{83}{35}.$
+    \end{solution}
+
+    \begin{homework}[6pts]
+        利用数据$f(0)=2.0,f(1)=1.5,f(3)=0.25,f'(3)=1$构造出三次插值多项式，写出其插值余项，并计算$f(2)$的近似值。
+    \end{homework}
+
+    \begin{solution}
+        设插值多项式$P_3(x)=a_{3}x^3+a_2 x^2+a_1 x_1+a_0$，对应$P_3 '(x)=3a_3 x^2+2a_2 x+a_1;$
+        
+        则有$P_3(0)=a_0=2,P_3(1)=a_3+a_2+a_1+a_0=1.5,P_3 '(3)=27a_3+6a_2+a_1=1$
+
+        $ P_3(3)=27a_3+9a_2+3a_1+a_0=0.25\Rightarrow a_3=\dfrac{41}{144},a_2=-\dfrac{85}{72},a_1=\dfrac{19}{48},a_0=2$
+
+        所以插值函数为$P_3(x)=\dfrac{41}{144}x_3-\dfrac{85}{72}x^2+\dfrac{19}{48}x+2$，
+
+        余项为$R_3(x)=\dfrac{f^{(4)}(\xi)}{24}x(x-1)(x-3)^2,\xi\in[0,3];P_3(2)=\dfrac{25}{72}$
+    \end{solution}
+
+    \begin{homework}[6pts]
+        设$f(x)=20x^3-x+2024$，求$f[1,2,4]$和$f[1,2,3,4]$；
+    \end{homework}
+
+    \begin{solution}
+        $f[1]=2043,f[2]=2182,f[3]=2561,f[4]=3300;$
+        
+        $f[1,2]=139,f[2,3]=379,f[3,4]=739,f[2,4]=559;$
+
+        $f[1,2,3]=120,f[2,3,4]=180,\color{red}{f[1,2,4]=140};$
+
+        $\color{red}{f[1,2,3,4]=20}.$
+    \end{solution}
+
+    \begin{homework}[6pts]
+        设$\{l_i(x)\}_{i=0}^6$是以$\{x_i=2i\}_{i=0}^6$为节点的$6$次Lagrange插值基函数，求$\sum\limits_{i=0}^6 (x_i^3+x_i^2+1)l_i(x)$和$\sum\limits_{i=0}^6 (x_i^3+x_i^2+1)l_i'(x)$，结果需要化简。
+    \end{homework}
+
+    \begin{solution}
+        记$f(x)=x^3+x^2+1$，则$l_i(x)$可以看作对$f(x)$插值时的基函数。由于节点数量为7，
+        
+        $\deg f(x)=3$，所以$\sum\limits_{i=0}^6 (x_i^3+x_i^2+1)l_i(x)=f(x)=x^3+x^2+1,$
+
+        $\sum\limits_{i=0}^6 (x_i^3+x_i^2+1)l_i'(x)=f'(x)=3x^2+2x.$
+    \end{solution}
+
+    \begin{homework}[6pts]
+        设$x_0,x_1,\cdots,x_n(n>2)$为互异的节点，$l_k(x)(k=0,1,\cdots,n)$为与其对应的$n$次Lagrange插值基函数，证明$\sum\limits_{k=0}^n (x_k-x)^n l_k(x)=0$。
+    \end{homework}
+
+    \begin{solution}
+        \begin{flalign*}
+            \qquad \sum_{k=0}^n (x_k-x)^n l_k(x) &= \sum_{k=0}^n \sum_{m=0}^n \left(\binom{n}{m}x_k^{n-m}(-x)^m\right) l_k(x)  & \\
+                &= \sum_{m=0}^n \binom{n}{m} (-x)^m \sum_{k=0}^n x_k^{n-m} l_k(x) =\sum_{m=0}^n \binom{n}{m}(-x)^m x^{n-m} & \\
+                &=(x-x)^n\equiv 0 & \\
+        \end{flalign*}
+    \end{solution}

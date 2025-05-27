@@ -1,0 +1,40 @@
+\chapter{第一次作业}
+
+    \begin{homework}[10pts]
+        对$a>0,n\in\mathbb{N_+}$，$x$很靠近$0$，给出$f(x)$的可靠数值计算方法，使其尽量达到更好的精度：$f(x)=(a+x)^n-a^n$。
+    \end{homework}
+
+    \begin{solution}
+        $f(x)=(a+x)^n-a^n=\sum\limits_{k=1}^n C_n^k x^k a^{n-k}=(\cdots((x+C_n^1 a)x+C_n^2 a^2)x\cdots+C_n^{n-1}a^{n-1})x$
+    \end{solution}
+
+    \begin{homework}[4pts]
+        对$a>0$，$x$很靠近$0$，给出$f(x)$的可靠数值计算方法，使其尽量达到更好的精度：$f(x)=\cos(a-x)-\cos a$。
+    \end{homework}
+
+    \begin{solution}
+        \begin{flalign*}
+            f(x)&=\cos(a-x)-\cos a=\cos a\cos x+\sin a\sin x-\cos a &\\
+                &=\cos a(\cos x-1)+\sin a\sin x\approx-\frac{1}{2}x^2 \cos a+x\sin a &
+        \end{flalign*}
+    \end{solution}
+
+    \begin{homework}[4pts]
+        对$x\gg a$，给出$f(x)$的可靠数值计算方法，使其尽量达到更好的精度：$f(x)=\sqrt{x^2+a}-x$。
+    \end{homework}
+
+    \begin{solution}
+        $f(x)=\sqrt{x^2+a}-x=\dfrac{x^2+a-x^2}{\sqrt{x^2+a}+x}=\dfrac{a}{\sqrt{x^2+a}+x}$
+    \end{solution}
+
+    \begin{homework}[4pts]
+        设有精确值$x^{*}=2023.0905$，则其近似值$x_1=2023.090,x_2=2023.0900$分别有几位有效数字？
+    \end{homework}
+
+    \begin{solution}
+        $x_1$有$7$位有效数字，$x_2$有$7$位有效数字。
+    \end{solution}
+
+
+
+
