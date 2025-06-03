@@ -1,0 +1,93 @@
+\chapter{第十一次作业}
+
+    \begin{homework}[5pts]
+        试利用Gram-Schmidt正交化算法，求$[0,1]$上的三次多项式关于内积\[\int_0^1\sqrt{x}f(x)g(x)\diff x\]的一组正交基。
+    \end{homework}
+
+    \begin{solution}
+        一组基为$\{v_i\}_{i=1}^4=\{1,x,x^2,x^3\},e_1=\dfrac{v_1}{\|v_1\|}=\frac{\sqrt{6}}{2},u_2=v_2-\frac{\langle x,1 \rangle}{\langle 1,1 \rangle}\cdot 1=x-\frac35,$
+
+        $\|u_2\|^2=\frac8{175},e_2=\dfrac{u_2}{\|u_2\|}=\dfrac{\sqrt{14}}{4}(5x-3),u_3=v_3-\frac{\langle x^2,1 \rangle}{\langle 1,1 \rangle}\cdot 1-\frac{\langle x^2,v_2 \rangle}{\langle v_2,v_2 \rangle}\cdot v_2=x^2-\dfrac{10}9x+\dfrac{5}{21},$
+
+        $ \|u_3\|^2=\frac{128}{43659},e_3=\dfrac{u_3}{\|u_3\|}=\dfrac{\sqrt{11}}{16}(63x^2-70x+15),$
+
+        $ u_4=v_4-\frac{\langle x^3,1 \rangle}{\langle 1,1 \rangle}\cdot 1-\frac{\langle x^3,v_2 \rangle}{\langle v_2,v_2 \rangle}\cdot v_2-\frac{\langle x^3,v_3 \rangle}{\langle v_3,v_3 \rangle}\cdot v_3=x^3-\frac{21}{13}x^2+\frac{105}{143}x-\frac{35}{429},$
+
+        $ \|u_4\|^2=\dfrac{512}{2760615},e_4=\dfrac{u_4}{\|u_4\|}=\dfrac{\sqrt{30}}{32}(429x^3-693x^2+315x-35),\{e_i\}_{i=1}^4$即为所求。
+
+        数值结果如下：$e_1=1.22474,e_2=4.67707x-2.80624,$
+
+        $ e_3=4.39726-20.5206x+18.4685x^2,e_4=-5.99072+53.9164x-118.616x^2+73.4291 x^3$
+
+        可以在Mathematica利用以下代码验证：
+
+        \begin{lstlisting}
+    ip[f_, g_] := Integrate[Sqrt[x]*f*g, {x, 0, 1}];
+    basis = {1, x, x^2, x^3};
+    orthonormalBasis = Orthogonalize[basis, ip];
+    Simplify /@ orthonormalBasis
+        \end{lstlisting}
+    \end{solution}
+
+    \begin{homework}[5pts]
+        对下列数据用最小二乘法求形如$\varphi(x)=\frac{x}{a+bx}$的拟合函数。
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $x_i$ & 2.10 & 2.50 & 2.80 & 3.20 \\
+                \hline
+                $y_i$ & 0.6087 & 0.6849 & 0.7368 & 0.8111 \\
+                \hline
+            \end{tabular}
+            \label{tab:1}
+        \end{table}
+    \end{homework}
+
+    \begin{solution}
+        令$u_i=\dfrac1{x_i},v_i=\dfrac1{y_i}$，问题化为$v_i=au_i+b$，此时数据如下：
+
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline
+                $u_i$ & 0.4762 & 0.4000 & 0.3571 & 0.3125 \\
+                \hline
+                $v_i$ & 1.6420 & 1.4603 & 1.3571 & 1.2333 \\
+                \hline
+            \end{tabular}
+            \label{tab:2}
+        \end{table}
+
+        拟合得到$a\approx 2.4867,b\approx0.4623$。
+    \end{solution}
+
+    \begin{homework}[5pts]
+        试确定常数$c_0,c_1\in\mathbb{R}$使得$\int_0^1| e^x-c_0-c_1 x|^2\diff x$达到极小，并求出极小值。
+    \end{homework}
+
+    \begin{solution}
+        \begin{flalign*}
+            \qquad\,\, &\int_0^1|e^x-c_0-c_1 x|^2\diff x=\int_0^1(e^x-c_0-c_1 x)^2\diff x&\\
+            =&\int_0^1\left(c_0^2-2c_0 e^x+e^{2x}+2c_0 c_1 x-2c_1 xe^x+c_1^2 x^2\right)\diff x &\\
+            =&c_0^2+(2-2e)c_0+c_0 c_1-\frac12-2c_1+\frac13 c_1^2+\frac{e^2}{2}\coloneqq f(c_0,c_1)
+        \end{flalign*}
+
+        $\nabla f=\left(2c_0+2-2e+c_1,c_0+\frac23c_1-2\right)^{\top}=0\Rightarrow c_0=4e-10,c_1=18-6e$
+
+        此时Hessian矩阵为$\begin{bmatrix}2&1\\1&\tfrac23\end{bmatrix}$正定，故是极小值点，
+
+        计算得到极小值为$-\frac72e^2+20e-\frac{57}{2}$
+    \end{solution}
+
+    \begin{homework}[5pts]
+        求函数$f(x)=\cos x$在区间$[0,1]$上关于权函数$\rho(x)=\sqrt{x}$的三次最佳平方逼近多项式。
+    \end{homework}
+
+    \begin{solution}
+        沿用1中记号，$f(x)=\sum_{i=1}^4 \langle e_i(x),\cos x \rangle e_i(x)=\sum_{i=1}^4\int_0^1\sqrt{x}e_i(x)\cos(x)\diff x\cdot e_i(x)$
+
+        $\qquad\qquad\qquad\qquad\,\,\, \approx 0.999046+0.0141787 x-0.556365 x^2+0.0830802x^3$
+    \end{solution}
+

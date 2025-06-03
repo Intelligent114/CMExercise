@@ -28,7 +28,7 @@
     \begin{enumerate}
         \item (6pts) 利用牛顿迭代公式估算$\ln 2$的值(可取$f(x)=e^x-2=0$)，取初值$x_0=0.618$，迭代$5$次，列表计算$x_i,i=1,2,\cdots,5$。请估计$x_5$的有效数字位数(计算$x_5$时，请保留尽量多的小数点位数)；
         \item (6pts) 设$n>1$，给出用牛顿法计算$\sqrt[n]{a}(a>0)$时的迭代公式，并用它来计算$\sqrt[5]{2025}$，取初值$x_0=5.0$，求$x_4$；
-        \item (10pts) 写出对方程$x^3-4x^2+5x-2=0$求根时的Newton迭代公式$x_n=\varphi(x_{n-1})$；
+        \item (10pts) 写出对方程$x^3-4x^2+5x-2=0$求根时的Newton迭代公式$x_n=\varphi(x_{n-1})$，取初值$x_0=0$，证明：$\lim\limits_{n\rightarrow\infty}x_n$存在；
         \item (10pts) 设$f(x)$为$\mathbb{R}$上的光滑实值函数，$r\in\mathbb{R}$为$f(x)$的一个$p$重根($p\geq2$)，试推导迭代公式$x_{k+1}=x_k-p\dfrac{f(x_k)}{f'(x_k)}$在根$r$附近的收敛阶。
     \end{enumerate}
 
@@ -46,7 +46,11 @@
 
     $\quad x_0=5,x_1=4.648,x_2=4.5858,x_3=4.58464,x_4=4.58443$。
 
-    $3.\,\,f(x)=x^3-4x^2+5x-2,f'(x)=3x^2-8x+5$，迭代公式为$x_{n+1}=x_n+\dfrac{x_n^3-4x_n^2+5x_n-2}{3x_n^2-8x_n+5}$。
+    $3.\,\,f(x)=x^3-4x^2+5x-2,f'(x)=3x^2-8x+5$，迭代公式为$x_{n+1}=x_n-\dfrac{x_n^2-3x_n+2}{3x_n-5}$。
+
+    $\quad \varphi(x)=\dfrac{2x^2-2x-2}{3x-5},\forall x\in[0,1),\dfrac{f(x)}{f'(x)}<0,2x^2-2x-2-(3x-5)>0\Rightarrow\varphi(x)<1$
+
+    $\quad$因此从$x_0=0$开始的迭代序列是单调递增的，且有上界$1$，因此收敛。
 
     $4.\,\,$设$f(x)=(x-r)^p g(x),g(r\neq0),f'(x)=p(x-r)^{r-1}g(x)+(x-r)^p g'(x)$，令$e_k=x_k-r$，
 
