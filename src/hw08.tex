@@ -10,7 +10,7 @@
     \end{homework}
 
     \begin{solution}
-        迭代格式为$\begin{cases}x_1^{(k+1)}=\frac12(2+x_2^{(k)})\\x_2^{(k+1)}=\frac12(x_1^{(k)}+x_3^{(k)})\\x_3^{(k+1)}=\frac12(2+x_2^{(k)}+x_4^{(k)})\\x_4^{(k+1)}=\frac12(4+x_3^{(k)}\end{cases},G=D^{-1}(L+U)=\begin{bmatrix}0&\frac12&0&0\\\frac12&0 &\frac12&0 \\0&\frac12&0&\frac12\\0&0&\frac12& 0\end{bmatrix}$。
+        迭代格式为$\begin{cases}x_1^{(k+1)}=\frac12(2+x_2^{(k)})\\x_2^{(k+1)}=\frac12(x_1^{(k)}+x_3^{(k)})\\x_3^{(k+1)}=\frac12(2+x_2^{(k)}+x_4^{(k)})\\x_4^{(k+1)}=\frac12(4+x_3^{(k)})\end{cases},G=-D^{-1}(L+U)=\begin{bmatrix}0&\frac12&0&0\\\frac12&0 &\frac12&0 \\0&\frac12&0&\frac12\\0&0&\frac12& 0\end{bmatrix}$。
 
         $G$的特征值为$\dfrac{\pm 1\pm\sqrt{5}}{4},\rho(G)=\dfrac{1+\sqrt{5}}4<1$，故迭代收敛。
     \end{solution}
@@ -52,4 +52,23 @@
 
         当$\alpha=\dfrac25$时，谱半径$\rho(G)=\max\{|1-\alpha|,|1-4\alpha|\}$最小，收敛速度最快。
     \end{solution}
+
+
+    \begin{theorem}[迭代方法的分裂矩阵和迭代矩阵]
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|c|c|c|}
+                \hline
+                迭代方法 & 分裂矩阵$Q$ & 迭代矩阵$G$ \\
+                \hline
+                Jacobi & $D$ & $I-D^{-1}A$ \\
+                \hline
+                Gauss-Seidel & $D+L$ & $-(D+L)^{-1}U$ \\
+                \hline
+                SOR & $\tfrac1{\omega}D+L$ & $(D+\omega L)^{-1}((1-\omega)D-\omega U)$ \\
+                \hline
+            \end{tabular}
+        \end{table}
+    \end{theorem}
+
 

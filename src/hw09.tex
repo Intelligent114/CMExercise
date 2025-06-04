@@ -17,11 +17,13 @@
     \end{homework}
 
     \begin{solution}
-        选取模长最大的非对角元$a_{13}$与$a_{31}$，对应$\varphi=\dfrac12\arctan\dfrac{2a_{13}}{a_{11}-a_{33}}=\dfrac12\arctan1=\dfrac{\pi}{8}$，
+        选取模长最大的非对角元$a_{13}$与$a_{31}$，对应$s=\dfrac{a_{33}-a_{11}}{2a_{13}}=-1$，
 
-        对应旋转矩阵$Q=\begin{bmatrix}\cos\varphi&0&\sin\varphi\\0&1&0\\-\sin\varphi&0&\cos\varphi\end{bmatrix}=\begin{bmatrix}\frac{\sqrt{2+\sqrt{2}}}{2} & 0 & \frac{\sqrt{2-\sqrt{2}}}{2} \\0 & 1 & 0 \\-\frac{\sqrt{2-\sqrt{2}}}{2} & 0 & \frac{\sqrt{2+\sqrt{2}}}{2}\end{bmatrix}$，
+        方程$t^2+2st-1=0$模较小根为$1-\sqrt{2}\coloneqq \tan\varphi\Rightarrow \cos\varphi=\frac{\sqrt{2+\sqrt{2}}}{2},\sin\varphi=-\frac{\sqrt{2-\sqrt{2}}}{2}$
 
-        $B=Q^{\top}AQ=\begin{bmatrix}5&\frac{\sqrt{2+\sqrt{2}}}{2}&0\\\frac{\sqrt{2+\sqrt{2}}}{2}&4&\frac{\sqrt{2-\sqrt{2}}}{2}\\0&\frac{\sqrt{2-\sqrt{2}}}{2}&5\end{bmatrix}$。
+        对应旋转矩阵$Q=\begin{bmatrix}\cos\varphi&0&\sin\varphi\\0&1&0\\-\sin\varphi&0&\cos\varphi\end{bmatrix}=\begin{bmatrix}\frac{\sqrt{2+\sqrt{2}}}{2} & 0 & -\frac{\sqrt{2-\sqrt{2}}}{2} \\0 & 1 & 0 \\\frac{\sqrt{2-\sqrt{2}}}{2} & 0 & \frac{\sqrt{2+\sqrt{2}}}{2}\end{bmatrix}$，
+
+        $B=Q^{\top}AQ=\begin{bmatrix}5+2\sqrt{2}&\frac{\sqrt{2+\sqrt{2}}}{2}&0\\\frac{\sqrt{2+\sqrt{2}}}{2}&4&\frac{\sqrt{2-\sqrt{2}}}{2}\\0&\frac{\sqrt{2-\sqrt{2}}}{2}&5-2\sqrt{2}\end{bmatrix}$。
     \end{solution}
 
     \begin{homework}[8pts]
